@@ -1,0 +1,11 @@
+@import './__container/about__container.scss';
+@import './__content-title/about__content-title.scss';
+@import './__image/about__image.scss';
+@import './__paragraph/about__paragraph.scss';
+
+.about {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 83px;
+    padding: 0 104px;
+}

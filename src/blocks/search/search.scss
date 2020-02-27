@@ -1,0 +1,19 @@
+@import './__container/search__container.scss';
+@import './__content-title/search__content-title.scss';
+@import './__paragraph/search__paragraph.scss';
+
+.search {
+    height: 576px;
+    margin-bottom: 80px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-color: gray;
+}

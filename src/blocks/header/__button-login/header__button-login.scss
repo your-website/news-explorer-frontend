@@ -1,0 +1,21 @@
+.header__button-login {
+    width: 178px;
+    height: 48px;
+    cursor: pointer;
+
+    border: 1px solid $color-one;
+    background-color: transparent;
+    border-radius: 100px;
+
+    font-family: $font-regular;
+    color: $color-one;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+
+    transition: background-color 0.5s ease;
+
+    &:hover {
+        background-color: gray;
+    }
+}

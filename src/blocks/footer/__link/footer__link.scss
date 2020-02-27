@@ -1,0 +1,25 @@
+@import './_icon/footer__link_icon.scss';
+
+.footer__link {
+    font-family: $font-regular;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+
+    color: $color-two;
+
+    transition: color 0.7s ease;
+
+    &:hover {
+        color: $color-three - 60;
+    }
+
+    &:hover .footer__svg .footer__svg-path {
+        fill: $color-three - 60;
+    }
+
+    &:hover .footer__svg .footer__svg-path {
+        fill: $color-three - 60;
+    }
+}

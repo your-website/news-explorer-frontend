@@ -1,0 +1,21 @@
+.form-search__input {
+    background-color: $color-one;
+    height: 64px;
+    width: 608px;
+    border: 1px solid #D1D2D6;
+    box-sizing: border-box;
+    backdrop-filter: blur(8px);
+
+    border-radius: 100px;
+    text-indent: 23px;
+
+    &::placeholder {
+        font-family: $font-regular;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 22px;
+
+        color: $color-three;
+    }
+}

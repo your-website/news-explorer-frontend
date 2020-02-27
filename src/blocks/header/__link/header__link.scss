@@ -1,0 +1,14 @@
+@import './_hover/header__link_hover.scss';
+
+.header__link {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    font-family: $font-regular;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+
+    color: $color-one;
+}
