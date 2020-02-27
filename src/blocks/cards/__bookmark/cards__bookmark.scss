@@ -1,0 +1,32 @@
+@import './_focus/cards__bookmark_focus.scss';
+
+.cards__bookmark {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    cursor: pointer;
+
+    width: 40px;
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 8px;
+
+    background-color: $background-color-two;
+
+    &:hover .cards__svg_path {
+        stroke: #1A1B22;
+    }
+
+    &:hover .cards__not-login {
+        display: flex;
+    }
+
+    &:focus .cards__svg_path {
+        fill: #2F71E5;
+        stroke: #2F71E5;
+    }
+}

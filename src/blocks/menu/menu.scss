@@ -1,0 +1,10 @@
+@import './__item/menu__item.scss';
+@import './_login/menu_login.scss';
+
+.menu {
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    justify-content: space-between;
+}

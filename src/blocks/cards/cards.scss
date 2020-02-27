@@ -1,0 +1,18 @@
+@import './__content-title/cards__content-title.scss';
+@import './__date/cards__date.scss';
+@import './__item/cards__item.scss';
+@import './__paragraph/cards__paragraph.scss';
+@import './__source/cards__source.scss';
+@import './__bookmark/cards__bookmark.scss';
+@import './__svg/cards__svg.scss';
+@import './__not-login/cards__not-login.scss';
+@import './__img/cards__img.scss';
+@import './__container/cards__container.scss';
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 400px);
+    grid-auto-rows: 576px;
+    justify-content: center;
+    grid-gap: 16px;
+}

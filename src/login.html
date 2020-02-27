@@ -14,13 +14,14 @@
 <body class="page">
 
   <header class="header">
-    <div class="header__container">
-      <h2 class="header__logo"><a class="header__link-logo" href="./login.html">NewsExplorer</a></h2>
-      <nav class="header__nav">
-        <ul class="menu">
+  <div class="header__container">
+    <h2 class="header__logo"><a class="header__link-logo" href="./index.html">NewsExplorer</a></h2>
+      <nav class="header__nav header__nav_login">
+        <ul class="menu menu_login">
           <li class="menu__item"><a class="header__link" href="./login.html">Главная</a></li>
+          <li class="menu__item"><a class="header__link" href="#">Сохранённые статьи</a></li>
         </ul>
-        <button class="header__button">Авторизоваться</button>
+        <button class="header__button header__button_login">Грета <svg class="header__svg" width="18" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M6 2H2v12h4v2H2a2 2 0 01-2-2V2a2 2 0 012-2h4v2zm7.586 7l-4.293 4.134 1.414 1.362 6.707-6.459-6.707-6.459L9.293 2.94l4.293 4.134H4V9h9.586z" fill="#fff"/></svg></button>
       </nav>
     </div>
     
@@ -44,10 +45,7 @@
       <h2 class="results__content-title">Результаты поиска</h2>
       <div class="cards">
         <div class="cards__item">
-          <button class="cards__bookmark">
-            <div class="cards__not-login">
-              <p class="cards__paragraph cards__paragraph_not-login">Войдите, чтобы сохранять статьи</p>
-            </div>
+          <button class="cards__bookmark cards__bookmark_focus">
             <svg class="cards__svg" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="cards__svg_path" d="M11.382 15.714L6 19.942V4h12v15.942l-5.382-4.228-.618-.486-.618.486z" stroke="#B6BCBF" stroke-width="2"/></svg>
           </button>
           <img class="cards__img" src="<%=require('./images/search-result__first.jpg')%>" alt="">
@@ -59,10 +57,7 @@
           <p class="cards__source">ЛЕНТА.РУ</p>
         </div>
         <div class="cards__item">
-          <button class="cards__bookmark">
-            <div class="cards__not-login">
-              <p class="cards__paragraph cards__paragraph_not-login">Войдите, чтобы сохранять статьи</p>
-            </div>
+          <button class="cards__bookmark cards__bookmark_focus">
             <svg class="cards__svg" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="cards__svg_path" d="M11.382 15.714L6 19.942V4h12v15.942l-5.382-4.228-.618-.486-.618.486z" stroke="#B6BCBF" stroke-width="2"/></svg>
           </button>
           <img class="cards__img" src="<%=require('./images/search-result__second.jpg')%>" alt="">
@@ -74,10 +69,7 @@
           <p class="cards__source">МЕДУЗА</p>
         </div>
         <div class="cards__item">
-          <button class="cards__bookmark">
-            <div class="cards__not-login">
-              <p class="cards__paragraph cards__paragraph_not-login">Войдите, чтобы сохранять статьи</p>
-            </div>
+          <button class="cards__bookmark cards__bookmark_focus">
             <svg class="cards__svg" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="cards__svg_path" class="cards__svg_path" d="M11.382 15.714L6 19.942V4h12v15.942l-5.382-4.228-.618-.486-.618.486z" stroke="#B6BCBF" stroke-width="2"/></svg>
           </button>
           <img class="cards__img" src="<%=require('./images/search-result__third.jpg')%>" alt="">
@@ -89,10 +81,7 @@
           <p class="cards__source">РИА</p>
         </div>
         <div class="cards__item">
-          <button class="cards__bookmark">
-            <div class="cards__not-login">
-              <p class="cards__paragraph cards__paragraph_not-login">Войдите, чтобы сохранять статьи</p>
-            </div>
+          <button class="cards__bookmark cards__bookmark_focus">
             <svg class="cards__svg" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="cards__svg_path" d="M11.382 15.714L6 19.942V4h12v15.942l-5.382-4.228-.618-.486-.618.486z" stroke="#B6BCBF" stroke-width="2"/></svg>
           </button>
           <img class="cards__img" src="<%=require('./images/search-result__first.jpg')%>" alt="">
@@ -104,10 +93,7 @@
           <p class="cards__source">ЛЕНТА.РУ</p>
         </div>
         <div class="cards__item">
-          <button class="cards__bookmark">
-            <div class="cards__not-login">
-              <p class="cards__paragraph cards__paragraph_not-login">Войдите, чтобы сохранять статьи</p>
-            </div>
+          <button class="cards__bookmark cards__bookmark_focus">
             <svg class="cards__svg" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="cards__svg_path" d="M11.382 15.714L6 19.942V4h12v15.942l-5.382-4.228-.618-.486-.618.486z" stroke="#B6BCBF" stroke-width="2"/></svg>
           </button>
           <img class="cards__img" src="<%=require('./images/search-result__second.jpg')%>" alt="">
@@ -119,10 +105,7 @@
           <p class="cards__source">МЕДУЗА</p>
         </div>
         <div class="cards__item">
-          <button class="cards__bookmark">
-            <div class="cards__not-login">
-              <p class="cards__paragraph cards__paragraph_not-login">Войдите, чтобы сохранять статьи</p>
-            </div>
+          <button class="cards__bookmark cards__bookmark_focus">
             <svg class="cards__svg" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="cards__svg_path" class="cards__svg_path" d="M11.382 15.714L6 19.942V4h12v15.942l-5.382-4.228-.618-.486-.618.486z" stroke="#B6BCBF" stroke-width="2"/></svg>
           </button>
           <img class="cards__img" src="<%=require('./images/search-result__third.jpg')%>" alt="">

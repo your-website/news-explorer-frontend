@@ -1,4 +1,6 @@
-.header__button-login {
+@import './_login/header__button_login.scss';
+
+.header__button {
     width: 178px;
     height: 48px;
     cursor: pointer;

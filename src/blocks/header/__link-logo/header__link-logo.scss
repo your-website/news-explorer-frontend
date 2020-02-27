@@ -1,0 +1,8 @@
+.header__link-logo {
+    color: $color-one;
+    transition: color 0.7s ease;
+
+    &:hover {
+        color: $color-three - 60;
+    }
+}

@@ -1,0 +1,15 @@
+@import './__content-title/no-results__content-title.scss';
+@import './__paragraph/no-results__paragraph.scss';
+@import './__svg/no-results__svg.scss';
+@import './__container/no-results__container.scss';
+
+.no-results {
+    height: 374px;
+    display: none;
+
+    // display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: $background-color;
+}

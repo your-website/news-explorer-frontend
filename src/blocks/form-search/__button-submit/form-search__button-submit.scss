@@ -22,4 +22,8 @@
     &:hover {
         background-color: $button-hover;
     }
+
+    &:focus {
+        background-color: $button-marked;
+    }
 }

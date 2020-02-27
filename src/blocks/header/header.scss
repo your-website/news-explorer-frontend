@@ -1,10 +1,13 @@
-@import './__button-login/header__button-login.scss';
+@import './__button/header__button.scss';
 @import './__link/header__link.scss';
 @import './__logo/header__logo.scss';
 @import './__nav/header__nav.scss';
 @import './__container/header__container.scss';
+@import './__svg/header__svg.scss';
+@import './__link-logo/header__link-logo.scss';
 
 .header {
     position: fixed;
     width: 100%;
+    max-width: 1440px;
 }
