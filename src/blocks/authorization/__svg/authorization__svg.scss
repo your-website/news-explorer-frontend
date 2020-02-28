@@ -1,0 +1,11 @@
+.authorization__svg {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+
+    cursor: pointer;
+
+    &:hover .authorization__path {
+        fill: $color-two;
+    }
+}

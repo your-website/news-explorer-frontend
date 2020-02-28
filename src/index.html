@@ -39,6 +39,34 @@
       </div>
     </section>
 
+    <section class="authorization">
+      <div class="authorization__container">
+        <svg class="authorization__svg" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="authorization__path" d="M22.357 20l8.821 8.822-2.357 2.357L18.35 20.706a1 1 0 010-1.414L28.82 8.82l2.357 2.357L22.357 20z" fill="#fff"/><path class="authorization__path" d="M18.13 20l-8.82 8.822 2.356 2.357 10.472-10.472a1 1 0 000-1.414L11.666 8.82 9.31 11.178 18.131 20z" fill="#fff"/></svg>
+        <h2 class="authorization__content-title">Вход</h2>
+        <form action="" name="authorization" class="form-authorization">
+          <div class="form-authorization__container">
+            <label class="form-authorization__label" for="email">Email</label>
+            <input class="form-authorization__input" name="email" type="email" placeholder="Введите почту">
+            <span class="form-authorization__error form-authorization__error_email">Неправильный формат email</span>
+          </div>
+          <div class="form-authorization__container">
+            <label class="form-authorization__label" for="password">Пароль</label>
+            <input class="form-authorization__input" name="password" type="password" placeholder="Введите пароль">
+            <span class="form-authorization__error form-authorization__error_password">Пароль должен быть больше 2 символов</span>
+          </div>
+          <div class="form-authorization__container authorization__container_registration">
+            <label class="form-authorization__label" for="name">Имя</label>
+            <input class="form-authorization__input" name="name" type="text" placeholder="Введите своё имя">
+            <span class="form-authorization__error form-authorization__error_name">Такой пользователь уже есть</span>
+          </div>
+          <button class="form-authorization__submit form-authorization__submit_disabled" type="submit">Войти</button>
+        </form>
+        <p class="authorization__paragraph">или <span class="authorization__span authorization__span_log">Зарегистрироваться</span></p>
+        <p class="authorization__paragraph authorization__paragraph_success"><span class="authorization__span authorization__span_success">Зарегистрироваться</span></p>
+      </div>
+    </section>
+      
+
     <section class="preloader">
       <i class="preloader__circle"></i>
       <h2 class="preloader__content-title">Идет поиск новостей...</h2>

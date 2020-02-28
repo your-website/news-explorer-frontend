@@ -1,0 +1,15 @@
+.form-authorization__input {
+    margin-bottom: 3px;
+    border-bottom: 1px solid $color-three;
+
+    &::placeholder {
+        font-family: $font-regular;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 14px;
+        line-height: 17px;
+
+        color: $color-three;
+        opacity: 0.7;
+    }
+}
