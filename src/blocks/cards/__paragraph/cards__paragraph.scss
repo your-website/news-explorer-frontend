@@ -1,6 +1,7 @@
-@import './_not-login/cards__paragraph_not-login.scss';
+@import './_hint/cards__paragraph_hint.scss';
 
 .cards__paragraph {
+    padding: 0 15px;
     font-family: $font-regular;
     font-style: normal;
     font-weight: normal;

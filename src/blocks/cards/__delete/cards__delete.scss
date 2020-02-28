@@ -1,6 +1,4 @@
-@import './_focus/cards__bookmark_focus.scss';
-
-.cards__bookmark {
+.cards__delete {
     position: absolute;
     top: 24px;
     right: 24px;
@@ -17,8 +15,8 @@
 
     background-color: $background-color-two;
 
-    &:hover .cards__svg_path {
-        stroke: #1A1B22;
+    &:hover .cards__path_delete {
+        fill: #1A1B22;
     }
 
     &:hover .cards__hint {

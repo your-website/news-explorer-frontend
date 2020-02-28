@@ -5,9 +5,11 @@
 @import './__container/header__container.scss';
 @import './__svg/header__svg.scss';
 @import './__link-logo/header__link-logo.scss';
+@import './__path/header__path.scss';
 
 .header {
-    position: fixed;
+    position: sticky;
     width: 100%;
     max-width: 1440px;
+    background-color: grey;
 }

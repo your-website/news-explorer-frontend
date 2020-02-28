@@ -5,9 +5,12 @@
 @import './__source/cards__source.scss';
 @import './__bookmark/cards__bookmark.scss';
 @import './__svg/cards__svg.scss';
-@import './__not-login/cards__not-login.scss';
+@import './__hint/cards__hint.scss';
 @import './__img/cards__img.scss';
 @import './__container/cards__container.scss';
+@import './__delete/cards__delete.scss';
+@import './__path/cards__path.scss';
+@import './__container-paragraph/cards__container-paragraph.scss';
 
 .cards {
     display: grid;
@@ -15,4 +18,5 @@
     grid-auto-rows: 576px;
     justify-content: center;
     grid-gap: 16px;
+    height: 100%;
 }

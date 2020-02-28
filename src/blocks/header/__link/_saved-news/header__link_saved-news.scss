@@ -1,0 +1,14 @@
+.header__link.header__link_saved-news {
+    color: $color-two;
+
+    &:hover::after {
+        content: '';
+        position: absolute;
+        bottom: -25px;
+        left: 0;
+        display: block;
+        background: $color-two;
+        width: 100%;
+        height: 3px;
+    }
+}
