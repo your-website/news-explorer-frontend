@@ -3,4 +3,8 @@
         fill: #2F71E5;
         stroke: #2F71E5;
     }
+
+    &:hover::after {
+        content: none;
+    }
 }
