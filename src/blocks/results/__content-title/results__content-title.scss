@@ -1,6 +1,5 @@
 .results__content-title {
-    margin: 0 0 64px 104px;
-    padding-top: 80px;
+    margin: 0 0 64px 7%;
 
     font-family: $font-prefix-regular;
     font-style: normal;
@@ -9,4 +8,14 @@
     line-height: 46px;
 
     color: $color-two;
+
+    @media screen and (max-width: 890px) {
+        font-size: 30px;
+        line-height: 34px;
+    }
+
+    @media screen and (max-width: 800px) {
+        margin-left: 5%;
+        margin-bottom: 31px;
+    }
 }

@@ -18,4 +18,9 @@
 
         color: $color-three;
     }
+
+    @media screen and (max-width: 890px) {
+        width: 448px;
+        height: 56px;
+    }
 }

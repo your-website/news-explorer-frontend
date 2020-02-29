@@ -15,4 +15,10 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+
+    @media screen and (max-width: 890px) {
+        height: 400px;
+        margin-top: -68px;
+        justify-content: flex-end;
+    }
 }

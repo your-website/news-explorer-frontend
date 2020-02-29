@@ -26,4 +26,10 @@
     &:focus {
         background-color: $button-marked;
     }
+
+    @media screen and (max-width: 890px) {
+        right: 0;
+        height: 56px;
+        width: 160px;
+    }
 }

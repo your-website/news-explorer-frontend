@@ -21,4 +21,8 @@
     &:hover {
         background-color: gray;
     }
+
+    @media screen and (max-width: 890px) {
+        height: 40px;
+    }
 }

@@ -1,3 +1,7 @@
 .menu_login {
     width: 280px;
+
+    @media screen and (max-width: 890px) {
+        width: 235px;
+    }
 }

@@ -8,4 +8,15 @@
     line-height: 30px;
 
     color: $color-two;
+
+    @media screen and (max-width: 890px) {
+        font-size: 22px;
+        line-height: 24px;
+        margin-bottom: 9px;
+
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;  
+        overflow: hidden;
+    }
 }

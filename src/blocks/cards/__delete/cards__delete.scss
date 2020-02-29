@@ -22,4 +22,15 @@
     &:hover .cards__hint {
         display: flex;
     }
+
+    @media screen and (max-width: 890px) {
+        top: 8px;
+        right: 8px;
+    }
+
+    @media screen and (max-width: 968px) {
+        &:hover .cards__hint {
+            display: none;
+        }
+    }
 }

@@ -3,4 +3,9 @@
     margin-right: 58px;
     display: flex;
     justify-content: space-between;
+
+    @media screen and (max-width: 890px) {
+        margin-right: 35px;
+        width: 246px;
+    }
 }

@@ -8,4 +8,9 @@
     justify-content: space-between;
     margin-bottom: 83px;
     padding: 80px 104px 0;
+
+    @media screen and (max-width: 890px) {
+        padding: 40px 40px 0;
+        margin-bottom: 25px;
+    }
 }
