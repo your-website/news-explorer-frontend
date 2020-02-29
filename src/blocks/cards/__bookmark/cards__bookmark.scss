@@ -21,8 +21,28 @@
         stroke: #1A1B22;
     }
 
-    &:hover .cards__hint {
+    &:hover::after {
+        content: "Войдите, чтобы сохранять стать";
+        position: absolute;
+        top: 0;
+        right: 48px;
+        width: 190px;
+        height: 40px;
+    
         display: flex;
+        justify-content: center;
+        align-items: center;
+
+        font-family: $font-medium;
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 12px;
+
+        color: $color-two;
+    
+        background: $background-color-two;
+        box-shadow: 0px 10px 22px rgba(59, 74, 116, 0.1);
+        border-radius: 10px;
     }
 
     @media screen and (max-width: 890px) {
@@ -31,8 +51,8 @@
     }
 
     @media screen and (max-width: 968px) {
-        &:hover .cards__hint {
-            display: none;
+        &:hover::after {
+            content: none;
         }
     }
 }

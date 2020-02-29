@@ -23,4 +23,9 @@
         width: 448px;
         height: 56px;
     }
+
+    @media screen and (max-width: 560px) {
+        width: 286px;
+        margin-bottom: 16px;
+    }
 }

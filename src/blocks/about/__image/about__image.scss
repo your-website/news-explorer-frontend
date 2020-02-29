@@ -13,4 +13,13 @@
     @media screen and (max-width: 890px) {
         margin-top: 20px;
     }
+
+    @media screen and (max-width: 680px) {
+        width: 272px;
+        height: 272px;
+    }
+
+    @media screen and (max-width: 330px) {
+        margin-bottom: 24px;
+    }
 }

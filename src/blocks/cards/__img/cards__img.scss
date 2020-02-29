@@ -13,4 +13,20 @@
     @media screen and (max-width: 890px) {
         margin-bottom: 11px;
     }
+
+    @media screen and (max-width: 730px) {
+        width: 300px;
+    }
+
+    @media screen and (max-width: 660px) {
+        width: 400px;
+    }
+
+    @media screen and (max-width: 470px) {
+        width: 286px;
+    }
+
+    @media screen and (max-width: 330px) {
+        margin-bottom: 14px;
+    }
 }

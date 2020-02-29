@@ -9,4 +9,15 @@
     line-height: 46px;
 
     color: $color-two;
+
+    @media screen and (max-width: 890px) {
+        font-size: 30px;
+        line-height: 34px;
+        max-width: 400px;
+        margin-bottom: 16px;
+    }
+
+    @media screen and (max-width: 400px) {
+        max-width: 300px;
+    }
 }

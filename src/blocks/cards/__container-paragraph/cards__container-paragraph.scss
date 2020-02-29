@@ -2,6 +2,7 @@
     position: absolute;
     top: 24px;
     left: 24px;
+    padding: 0 15px;
 
     width: auto;
     height: 40px;
@@ -13,4 +14,9 @@
     border-radius: 8px;
 
     background-color: $background-color-two;
+
+    @media screen and (max-width: 968px) {
+        top: 8px;
+        left: 8px;
+    }
 }

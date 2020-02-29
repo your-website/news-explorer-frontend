@@ -32,4 +32,9 @@
         height: 56px;
         width: 160px;
     }
+
+    @media screen and (max-width: 560px) {
+        position: static;
+        width: 286px;
+    }
 }

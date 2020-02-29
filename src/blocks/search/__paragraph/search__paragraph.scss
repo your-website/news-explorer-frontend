@@ -12,4 +12,9 @@
         max-width: 452px;
         margin-bottom: 48px;
     }
+
+    @media screen and (max-width: 560px) {
+        max-width: 288px;
+        margin-bottom: 122px;
+    }
 }

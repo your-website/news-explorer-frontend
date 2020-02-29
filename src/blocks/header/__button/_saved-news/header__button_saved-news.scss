@@ -4,6 +4,10 @@
     border: 1px solid #D1D2D6;
 
     &:hover {
-        background-color: #D1D2D6 + 20;
+        background-color: #D1D2D6 - 80;
+    }
+
+    @media screen and (max-width: 630px) {
+        color: $color-one;
     }
 }

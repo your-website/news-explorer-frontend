@@ -1,4 +1,5 @@
 @import './_login/header__nav_login.scss';
+@import './_toggle/header__nav_toggle.scss';
 
 .header__nav {
     width: 278px;
@@ -7,8 +8,28 @@
     align-items: center;
     margin-top: 4px;
     position: relative;
+    transition: transform 1s ease;
+
 
     @media screen and (max-width: 890px) {
         margin-top: 0;
+    }
+
+    @media screen and (max-width: 630px) {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        top: -285px;
+        left: 0;
+
+        transform: translateY(0);
+
+
+        background-color: #000000a4;
+        width: 100%;
+        height: 286px;
+        z-index: -1;
     }
 }

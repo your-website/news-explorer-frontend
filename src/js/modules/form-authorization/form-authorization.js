@@ -9,8 +9,33 @@ const authorization__paragraph = document.querySelector('.authorization__paragra
 const authorization__paragraph_success = document.querySelector('.authorization__paragraph_success');
 const form = document.forms.authorization;
 
+const name = form.elements.name;
+const password = form.elements.password;
+const email = form.elements.email;
+const formAuthorization__error_name = document.querySelector('.form-authorization__error_name');
+const formAuthorization__error_email = document.querySelector('.form-authorization__error_email')
+const formAuthorization__error_passwrod = document.querySelector('.form-authorization__error_password');
+const validator = require('validator');
+
+function validate() {
+    if (!validator.isEmail(email.value)) {
+        formAuthorization__error_email.style.display = 'block';
+    } else formAuthorization__error_email.style.display = 'none';
+
+    if (validator.isEmpty(name.value)) {
+        formAuthorization__error_name.style.display = 'block';
+    } else formAuthorization__error_name.style.display = 'none';
+
+    if (!validator.isLength(password.value, {min:2, max: undefined})) {
+        formAuthorization__error_passwrod.style.display = 'block';
+    } else formAuthorization__error_passwrod.style.display = 'none';
+}
+
 form.addEventListener('submit', function () {
     event.preventDefault();
+    if (!validate()) {
+        return;
+    } else
     form.style.display = 'none';
     authorization__contentTitle.textContent = 'Пользователь успешно зарегистрирован!';
     authorization__paragraph_success.style.display = 'block';

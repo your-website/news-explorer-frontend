@@ -14,6 +14,10 @@
 <body class="page">
 
   <header class="header">
+    <div class="burger-menu">
+      <span class="burger-menu__line"></span>
+      <span class="burger-menu__line"></span>
+    </div>
     <div class="header__container">
       <h2 class="header__logo"><a class="header__link-logo" href="./index.html">NewsExplorer</a></h2>
       <nav class="header__nav">
@@ -30,7 +34,7 @@
       <div class="search__container">
         <h1 class="search__content-title">Что в мире творится?</h1>
         <p class="search__paragraph">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</p>
-        <form name="search" class="form-search" action="">
+        <form name="search" class="form-search">
           <div class="form-search__fieldset">
             <input class="form-search__input" type="text" placeholder="Введите тему новости">
             <button class="form-search__button-submit" type="submit">Искать</button>
@@ -41,22 +45,22 @@
 
     <section class="authorization">
       <div class="authorization__container">
-        <svg class="authorization__svg" width="40" height="40" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="authorization__path" d="M22.357 20l8.821 8.822-2.357 2.357L18.35 20.706a1 1 0 010-1.414L28.82 8.82l2.357 2.357L22.357 20z" fill="#fff"/><path class="authorization__path" d="M18.13 20l-8.82 8.822 2.356 2.357 10.472-10.472a1 1 0 000-1.414L11.666 8.82 9.31 11.178 18.131 20z" fill="#fff"/></svg>
+        <svg class="authorization__svg" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="authorization__path" d="M22.357 20l8.821 8.822-2.357 2.357L18.35 20.706a1 1 0 010-1.414L28.82 8.82l2.357 2.357L22.357 20z" fill="#fff"/><path class="authorization__path" d="M18.13 20l-8.82 8.822 2.356 2.357 10.472-10.472a1 1 0 000-1.414L11.666 8.82 9.31 11.178 18.131 20z" fill="#fff"/></svg>
         <h2 class="authorization__content-title">Вход</h2>
-        <form action="" name="authorization" class="form-authorization">
+        <form name="authorization" class="form-authorization">
           <div class="form-authorization__container">
             <label class="form-authorization__label" for="email">Email</label>
-            <input class="form-authorization__input" name="email" type="email" placeholder="Введите почту">
+            <input class="form-authorization__input" id="email" type="email" placeholder="Введите почту">
             <span class="form-authorization__error form-authorization__error_email">Неправильный формат email</span>
           </div>
           <div class="form-authorization__container">
             <label class="form-authorization__label" for="password">Пароль</label>
-            <input class="form-authorization__input" name="password" type="password" placeholder="Введите пароль">
+            <input class="form-authorization__input" id="password" type="password" placeholder="Введите пароль">
             <span class="form-authorization__error form-authorization__error_password">Пароль должен быть больше 2 символов</span>
           </div>
           <div class="form-authorization__container authorization__container_registration">
             <label class="form-authorization__label" for="name">Имя</label>
-            <input class="form-authorization__input" name="name" type="text" placeholder="Введите своё имя">
+            <input class="form-authorization__input" id="name" type="text" placeholder="Введите своё имя">
             <span class="form-authorization__error form-authorization__error_name">Такой пользователь уже есть</span>
           </div>
           <button class="form-authorization__submit form-authorization__submit_disabled" type="submit">Войти</button>
@@ -76,12 +80,9 @@
       <div class="cards">
         <div class="cards__item">
           <button class="cards__bookmark">
-            <div class="cards__hint">
-              <p class="cards__paragraph cards__paragraph_hint">Войдите, чтобы сохранять статьи</p>
-            </div>
             <svg class="cards__svg" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="cards__svg_path" d="M11.382 15.714L6 19.942V4h12v15.942l-5.382-4.228-.618-.486-.618.486z" stroke="#B6BCBF" stroke-width="2"/></svg>
           </button>
-          <img class="cards__img" src="<%=require('./images/search-result__first.jpg')%>" alt="">
+          <img class="cards__img" src="<%=require('./images/search-result__first.jpg')%>" alt="Национальное достояние – парки">
           <div class="cards__container">
             <p class="cards__date">2 августа, 2019</p>
             <h3 class="cards__content-title">Национальное достояние – парки</h3>
@@ -91,12 +92,9 @@
         </div>
         <div class="cards__item">
           <button class="cards__bookmark">
-            <div class="cards__hint">
-              <p class="cards__paragraph cards__paragraph_hint">Войдите, чтобы сохранять статьи</p>
-            </div>
             <svg class="cards__svg" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="cards__svg_path" d="M11.382 15.714L6 19.942V4h12v15.942l-5.382-4.228-.618-.486-.618.486z" stroke="#B6BCBF" stroke-width="2"/></svg>
           </button>
-          <img class="cards__img" src="<%=require('./images/search-result__second.jpg')%>" alt="">
+          <img class="cards__img" src="<%=require('./images/search-result__second.jpg')%>" alt="Лесные огоньки">
           <div class="cards__container">
             <p class="cards__date">2 августа, 2019</p>
             <h3 class="cards__content-title">Лесные огоньки: история одной фотографии</h3>
@@ -106,12 +104,9 @@
         </div>
         <div class="cards__item">
           <button class="cards__bookmark">
-            <div class="cards__hint">
-              <p class="cards__paragraph cards__paragraph_hint">Войдите, чтобы сохранять статьи</p>
-            </div>
-            <svg class="cards__svg" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="cards__svg_path" class="cards__svg_path" d="M11.382 15.714L6 19.942V4h12v15.942l-5.382-4.228-.618-.486-.618.486z" stroke="#B6BCBF" stroke-width="2"/></svg>
+            <svg class="cards__svg" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="cards__svg_path" d="M11.382 15.714L6 19.942V4h12v15.942l-5.382-4.228-.618-.486-.618.486z" stroke="#B6BCBF" stroke-width="2"/></svg>
           </button>
-          <img class="cards__img" src="<%=require('./images/search-result__third.jpg')%>" alt="">
+          <img class="cards__img" src="<%=require('./images/search-result__third.jpg')%>" alt="Первозданная тайга">
           <div class="cards__container">
             <p class="cards__date">2 августа, 2019</p>
             <h3 class="cards__content-title">«Первозданная тайга»: новый фотопроект Игоря Шпиленка</h3>

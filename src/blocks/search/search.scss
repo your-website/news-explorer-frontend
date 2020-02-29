@@ -21,4 +21,9 @@
         margin-top: -68px;
         justify-content: flex-end;
     }
+
+    @media screen and (max-width: 560px) {
+        height: 548px;
+        justify-content: center;
+    }
 }

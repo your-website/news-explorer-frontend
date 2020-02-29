@@ -28,4 +28,8 @@
         height: 56px;
         margin-top: 22px;
     }
+
+    @media screen and (max-width: 330px) {
+        width: 288px;
+    }
 }

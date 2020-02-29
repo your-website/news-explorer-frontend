@@ -17,4 +17,8 @@
         margin-bottom: 20px;
         margin-right: 4px;
     }
+
+    @media screen and (max-width: 890px) {
+        margin-left: 0;
+    }
 }

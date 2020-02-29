@@ -6,4 +6,8 @@
     line-height: 22px;
 
     color: $color-three;
+
+    @media screen and (max-width: 760px) {
+        order: 1;
+    }
 }

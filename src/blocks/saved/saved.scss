@@ -3,5 +3,13 @@
 @import './__span/saved__span.scss';
 
 .saved {
-    padding-left: 104px;
+    padding-left: 104px; 
+
+    @media screen and (max-width: 890px) {
+        padding-left: 40px;
+    }
+
+    @media screen and (max-width: 400px) {
+        padding-left: 16px;
+    }
 }
