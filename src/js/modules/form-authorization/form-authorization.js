@@ -6,13 +6,15 @@ const authorization__container_registration = document.querySelector('.authoriza
 const formAuthorization__submit = document.querySelector('.form-authorization__submit');
 const authorization__contentTitle = document.querySelector('.authorization__content-title');
 const authorization__paragraph = document.querySelector('.authorization__paragraph');
+const authorization__paragraph_success = document.querySelector('.authorization__paragraph_success');
 const form = document.forms.authorization;
 
 form.addEventListener('submit', function () {
     event.preventDefault();
     form.style.display = 'none';
     authorization__contentTitle.textContent = 'Пользователь успешно зарегистрирован!';
-
+    authorization__paragraph_success.style.display = 'block';
+    authorization__paragraph.style.display = 'none';
 });
 
 function openPopUp() {
@@ -22,6 +24,8 @@ function openPopUp() {
     authorization__span.textContent = 'Зарегистрироваться';
     formAuthorization__submit.classList.add('form-authorization__submit_disabled');
     authorization__contentTitle.textContent = 'Войти';
+    authorization__paragraph_success.style.display = 'none';
+    authorization__paragraph.style.display = 'block';
 }
 
 function closePopUp() {
@@ -47,3 +51,4 @@ function changePopUp() {
 authorization__svg.addEventListener('click', closePopUp);
 header__button.addEventListener('click', openPopUp);
 authorization__span.addEventListener('click', changePopUp);
+authorization__paragraph_success.addEventListener('click', openPopUp);
