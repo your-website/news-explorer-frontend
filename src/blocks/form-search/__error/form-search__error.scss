@@ -1,0 +1,18 @@
+.form-search__error {
+    position: absolute;
+    display: none;
+    bottom: -20px;
+    left: 20px;
+    font-family: $font-regular;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+
+    color: $color-one;
+
+    @media screen and (max-width: 560px) {
+        bottom: 57px;
+        left: 45px;
+    }
+}
