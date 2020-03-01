@@ -17,29 +17,53 @@ const formAuthorization__error_email = document.querySelector('.form-authorizati
 const formAuthorization__error_passwrod = document.querySelector('.form-authorization__error_password');
 const validator = require('validator');
 
-function validate() {
+function validateEmail() {
     if (!validator.isEmail(email.value)) {
         formAuthorization__error_email.style.display = 'block';
-    } else formAuthorization__error_email.style.display = 'none';
-
-    if (validator.isEmpty(name.value)) {
-        formAuthorization__error_name.style.display = 'block';
-    } else formAuthorization__error_name.style.display = 'none';
-
-    if (!validator.isLength(password.value, {min:2, max: undefined})) {
-        formAuthorization__error_passwrod.style.display = 'block';
-    } else formAuthorization__error_passwrod.style.display = 'none';
+        return false;
+    } else {
+        formAuthorization__error_email.style.display = 'none';
+        return true;
+    }
 }
 
-form.addEventListener('submit', function () {
-    event.preventDefault();
-    if (!validate()) {
-        return;
-    } else
+function validatePassword() {
+    if (!validator.isLength(password.value, {min:2, max: undefined})) {
+        formAuthorization__error_passwrod.style.display = 'block';
+        return false;
+    } else {
+        formAuthorization__error_passwrod.style.display = 'none';
+        return true;
+    }
+}
+
+function validateName() {
+    if (validator.isEmpty(name.value)) {
+        formAuthorization__error_name.style.display = 'block';
+        return false;
+    } else {
+        formAuthorization__error_name.style.display = 'none';
+        return true;
+    }
+}
+
+function success() {
     form.style.display = 'none';
     authorization__contentTitle.textContent = 'Пользователь успешно зарегистрирован!';
     authorization__paragraph_success.style.display = 'block';
     authorization__paragraph.style.display = 'none';
+};
+
+
+form.addEventListener('submit', function () {
+    event.preventDefault();
+    if (authorization__container_registration.style.display === 'flex') {
+        if (validateEmail() && validatePassword() && validateName()) {
+            success();
+        } else return
+    } else if (validateEmail() && validatePassword()) {
+        success();
+    } else return;
 });
 
 function openPopUp() {
