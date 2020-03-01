@@ -1,0 +1,10 @@
+@import './__circle/preloader__circle.scss';
+@import './__content-title/preloader__content-title.scss';
+.preloader {
+	height: 282px;
+	display: none;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	background-color: $background-color;
+}

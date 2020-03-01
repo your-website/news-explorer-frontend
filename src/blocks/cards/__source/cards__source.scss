@@ -1,0 +1,19 @@
+.cards__source {
+    position: absolute;
+    bottom: 24px;
+    left: 24px;
+    font-family: $font-medium;
+    font-style: normal;
+    font-size: 16px;
+    line-height: 20px;
+
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
+
+    color: $color-three;
+
+    @media screen and (max-width: 968px) {
+        bottom: 16px;
+        left: 16px;
+    }
+}

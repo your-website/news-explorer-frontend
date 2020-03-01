@@ -1,0 +1,15 @@
+@import './__content-title/results__content-title.scss';
+@import './__button/results__button.scss';
+
+.results {
+    padding: 80px 0;
+    background-color: $background-color;
+
+    @media screen and (max-width: 890px) {
+        padding: 41px 0;
+    }
+
+    @media screen and (max-width: 330px) {
+        padding: 33px 0;
+    }
+}

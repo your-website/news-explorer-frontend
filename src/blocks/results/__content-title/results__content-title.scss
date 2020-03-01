@@ -1,0 +1,26 @@
+.results__content-title {
+    margin: 0 0 64px 7%;
+
+    font-family: $font-prefix-regular;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 46px;
+
+    color: $color-two;
+
+    @media screen and (max-width: 890px) {
+        font-size: 30px;
+        line-height: 34px;
+    }
+
+    @media screen and (max-width: 800px) {
+        margin-left: 5%;
+        margin-bottom: 31px;
+    }
+
+    @media screen and (max-width: 330px) {
+        max-width: 150px;
+        margin-bottom: 24px;
+    }
+}

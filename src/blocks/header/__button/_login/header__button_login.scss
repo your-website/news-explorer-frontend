@@ -1,0 +1,8 @@
+.header__button.header__button_login {
+    max-width: 112px;
+
+    @media screen and (max-width: 890px) {
+        max-width: 100px;
+        height: 40px;
+    }
+}

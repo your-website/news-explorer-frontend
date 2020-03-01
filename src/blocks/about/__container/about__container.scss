@@ -1,0 +1,24 @@
+.about__container {
+    display: flex;
+    flex-direction: column;
+    max-width: 650px;
+    margin: 52px 59px 0 0;
+
+    @media screen and (max-width: 1370px) {
+        margin-top: 0;
+        max-width: 424px;
+    }
+
+    @media screen and (max-width: 1050px) {
+        margin-left: 32px;
+    }
+
+    @media screen and (max-width: 890px) {
+        margin-bottom: 20px;
+        margin-right: 4px;
+    }
+
+    @media screen and (max-width: 890px) {
+        margin-left: 0;
+    }
+}

@@ -1,0 +1,29 @@
+@import './__container/search__container.scss';
+@import './__content-title/search__content-title.scss';
+@import './__paragraph/search__paragraph.scss';
+
+.search {
+    height: 576px;
+    margin-top: -80px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    background-image: url('./main__bgc.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    @media screen and (max-width: 890px) {
+        height: 400px;
+        margin-top: -68px;
+        justify-content: flex-end;
+    }
+
+    @media screen and (max-width: 560px) {
+        height: 548px;
+        justify-content: center;
+    }
+}

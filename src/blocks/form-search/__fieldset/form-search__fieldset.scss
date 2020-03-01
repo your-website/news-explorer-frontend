@@ -1,0 +1,11 @@
+.form-search__fieldset {
+    position: relative;
+    border: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+
+    @media screen and (max-width: 560px) {
+        flex-direction: column;
+    }
+}

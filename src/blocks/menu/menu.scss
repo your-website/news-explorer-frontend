@@ -1,0 +1,17 @@
+@import './__item/menu__item.scss';
+@import './_login/menu_login.scss';
+@import './_footer-icons/menu_footer-icons.scss';
+@import './_foter-links/menu_foter-links.scss';
+
+.menu {
+    margin: 0;
+    padding: 0;
+
+    display: flex;
+    justify-content: space-between;
+
+    @media screen and (max-width: 630px) {
+        margin-top: 20px;
+        height: 80px;
+    }
+}

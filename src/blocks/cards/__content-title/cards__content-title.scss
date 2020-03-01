@@ -1,0 +1,26 @@
+.cards__content-title {
+    margin: 0 0 16px 0;
+
+    font-family: $font-prefix-regular;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 26px;
+    line-height: 30px;
+
+    color: $color-two;
+
+    @media screen and (max-width: 968px) {
+        font-size: 22px;
+        line-height: 24px;
+        margin-bottom: 9px;
+
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;  
+        overflow: hidden;
+    }
+
+    @media screen and (max-width: 730px) {
+        -webkit-line-clamp: 2;
+    }
+}

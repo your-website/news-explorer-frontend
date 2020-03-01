@@ -1,0 +1,18 @@
+@import '../vendor/normalize.scss';
+@import '../variables/variables.scss';
+@import '../vendor/fonts/fonts.css';
+
+@import './page/page.scss';
+@import './header/header.scss';
+@import './search/search.scss';
+@import './form-search/form-search.scss';
+@import './about/about.scss';
+@import './footer/footer.scss';
+@import './menu/menu.scss';
+@import './no-results/no-results.scss';
+@import './cards/cards.scss';
+@import './results/results.scss';
+@import './preloader/preloader.scss';
+@import './authorization/authorization.scss';
+@import './form-authorization/form-authorization.scss';
+@import './burger-menu/burger-menu.scss';

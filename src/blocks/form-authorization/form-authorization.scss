@@ -1,0 +1,11 @@
+@import './__input/form-authorization__input.scss';
+@import './__label/form-authorization__label.scss';
+@import './__submit/form-authorization__submit.scss';
+@import './__error/form-authorization__error.scss';
+@import './__container/form-authorization__container.scss';
+
+.form-authorization {
+    display: flex;
+    flex-direction: column;
+    max-width: 430px;
+}

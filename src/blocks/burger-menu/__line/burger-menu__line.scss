@@ -1,0 +1,16 @@
+@import './_color/burger-menu__line_color.scss';
+
+.burger-menu__line {
+    width: 100%;
+    height: 2px;
+    background-color: $color-one;
+    display: block;
+    
+    -webkit-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+        
+    &:nth-child(2){
+        margin: 3px auto;
+    }
+}

@@ -1,0 +1,23 @@
+.saved__content-title {
+    max-width: 530px;
+    margin: 0 0 30px 0;
+
+    font-family: $font-prefix-regular;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 46px;
+
+    color: $color-two;
+
+    @media screen and (max-width: 890px) {
+        font-size: 30px;
+        line-height: 34px;
+        max-width: 400px;
+        margin-bottom: 16px;
+    }
+
+    @media screen and (max-width: 400px) {
+        max-width: 300px;
+    }
+}

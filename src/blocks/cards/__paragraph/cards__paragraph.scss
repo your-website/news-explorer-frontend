@@ -1,0 +1,33 @@
+@import './_title/cards__paragraph_title.scss';
+
+.cards__paragraph {
+    font-family: $font-regular;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 22px;
+
+    color: $color-two;
+
+    @media screen and (max-width: 968px) {
+        font-size: 16px;
+        line-height: 22px;
+        margin-bottom: 9px;
+        display: -webkit-box;
+        -webkit-line-clamp: 4;
+        -webkit-box-orient: vertical;  
+        overflow: hidden;
+    }
+
+    @media screen and (max-width: 968px) {
+        padding: 0;
+    }
+
+    @media screen and (max-width: 730px) {
+        -webkit-line-clamp: 2;
+    }
+
+    @media screen and (max-width: 470px) {
+        -webkit-line-clamp: 4;
+    }
+}

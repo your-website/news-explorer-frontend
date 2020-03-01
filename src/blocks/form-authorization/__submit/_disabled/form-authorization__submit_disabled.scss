@@ -1,0 +1,12 @@
+.form-authorization__submit.form-authorization__submit_disabled {
+    background-color: #E6E8EB;
+    color: $color-three;
+
+    &:hover {
+        background-color: #E6E8EB;
+    }
+
+    &:focus {
+        background-color: #E6E8EB;
+    }
+}

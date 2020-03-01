@@ -1,0 +1,13 @@
+@import './_email/form-authorization__error_email.scss';
+@import './_password/form-authorization__error_password.scss';
+@import './_name/form-authorization__error_name.scss';
+
+.form-authorization__error {
+    font-family: $font-regular;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+
+    color: #FF0000;
+}

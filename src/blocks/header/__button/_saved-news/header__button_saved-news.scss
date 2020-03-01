@@ -1,0 +1,13 @@
+.header__button.header__button_saved-news {
+    width: 112px;
+    color: $color-two;
+    border: 1px solid #D1D2D6;
+
+    &:hover {
+        background-color: #D1D2D6 - 80;
+    }
+
+    @media screen and (max-width: 630px) {
+        color: $color-one;
+    }
+}

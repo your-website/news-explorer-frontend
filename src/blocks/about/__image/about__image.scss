@@ -1,0 +1,25 @@
+.about__image {
+
+
+    @media screen and (max-width: 1370px) {
+        width: 300px;
+    }
+
+    @media screen and (max-width: 1050px) {
+        width: 232px;
+        height: 232px;
+    }
+
+    @media screen and (max-width: 890px) {
+        margin-top: 20px;
+    }
+
+    @media screen and (max-width: 680px) {
+        width: 272px;
+        height: 272px;
+    }
+
+    @media screen and (max-width: 330px) {
+        margin-bottom: 24px;
+    }
+}

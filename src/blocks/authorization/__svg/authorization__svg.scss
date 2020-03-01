@@ -1,0 +1,21 @@
+.authorization__svg {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    width: 40px;
+    height: 40px;
+
+    cursor: pointer;
+
+    &:hover .authorization__path {
+        fill: $color-three + 10;
+    }
+
+    @media screen and (max-width: 560px) {
+        right: -10px;
+    }
+
+    @media screen and (max-width: 370px) {
+        right: 0;
+    }
+}

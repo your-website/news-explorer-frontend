@@ -1,0 +1,10 @@
+.cards__bookmark.cards__bookmark_focus {
+    &:focus .cards__svg_path {
+        fill: #2F71E5;
+        stroke: #2F71E5;
+    }
+
+    &:hover::after {
+        content: none;
+    }
+}

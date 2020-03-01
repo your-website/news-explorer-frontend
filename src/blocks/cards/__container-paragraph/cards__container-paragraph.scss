@@ -1,0 +1,22 @@
+.cards__container-paragraph {
+    position: absolute;
+    top: 24px;
+    left: 24px;
+    padding: 0 15px;
+
+    width: auto;
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 8px;
+
+    background-color: $background-color-two;
+
+    @media screen and (max-width: 968px) {
+        top: 8px;
+        left: 8px;
+    }
+}

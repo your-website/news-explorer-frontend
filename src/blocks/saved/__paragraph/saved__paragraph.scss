@@ -1,0 +1,24 @@
+@import './_articles/saved__paragraph_articles.scss';
+
+.saved__paragraph {
+    margin-bottom: 56px;
+    
+    font-family: $font-regular;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 24px;
+    
+    color: $color-two;
+
+    @media screen and (max-width: 890px) {
+        font-size: 14px;
+        line-height: 24px;
+        margin-bottom: 31px;
+    }
+
+    @media screen and (max-width: 400px) {
+        font-size: 18px;
+        max-width: 280px;
+    }
+}

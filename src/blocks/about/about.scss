@@ -1,0 +1,26 @@
+@import './__container/about__container.scss';
+@import './__content-title/about__content-title.scss';
+@import './__image/about__image.scss';
+@import './__paragraph/about__paragraph.scss';
+
+.about {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 83px;
+    padding: 80px 104px 0;
+
+    @media screen and (max-width: 890px) {
+        padding: 40px 40px 0;
+        margin-bottom: 25px;
+    }
+
+    @media screen and (max-width: 780px) {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    @media screen and (max-width: 330px) {
+        padding: 12px 16px 0;
+        margin-bottom: 60px;
+    }
+}

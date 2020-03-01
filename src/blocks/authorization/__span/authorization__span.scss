@@ -1,0 +1,16 @@
+.authorization__span {
+    font-family: $font-medium;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+
+    cursor: pointer;
+
+    color: $button-normal;
+
+    &:hover {
+        color: $button-hover;
+    }
+}

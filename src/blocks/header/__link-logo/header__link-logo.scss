@@ -1,0 +1,10 @@
+@import './_saved-news/header__link-logo_saved-news.scss';
+
+.header__link-logo {
+    color: $color-one;
+    transition: color 0.7s ease;
+
+    &:hover {
+        color: $color-three + 40;
+    }
+}

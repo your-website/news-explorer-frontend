@@ -1,0 +1,32 @@
+@import './_login/header__button_login.scss';
+@import './_saved-news/header__button_saved-news.scss';
+
+.header__button {
+    width: 178px;
+    height: 48px;
+    cursor: pointer;
+
+    border: 1px solid $color-one;
+    background-color: transparent;
+    border-radius: 100px;
+
+    font-family: $font-regular;
+    color: $color-one;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+
+    transition: background-color 0.5s ease;
+
+    &:hover {
+        background-color: gray;
+    }
+
+    @media screen and (max-width: 890px) {
+        height: 40px;
+    }
+
+    @media screen and (max-width: 630px) {
+        margin-left: 16px;
+    }
+}
