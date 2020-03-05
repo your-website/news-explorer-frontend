@@ -1,2 +1,3 @@
 import './blocks/index.scss';
-import './js/scripts'
+import './js/components/Header';
+import './js/components/Popup';
