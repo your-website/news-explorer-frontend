@@ -12,6 +12,11 @@ const formAuthorization__error_name = document.querySelector('.form-authorizatio
 const formAuthorization__error_email = document.querySelector('.form-authorization__error_email')
 const formAuthorization__error_passwrod = document.querySelector('.form-authorization__error_password');
 const validator = require('validator');
+const formSearch = document.forms.search;
+const search = formSearch.elements.search;
+const submitSearch = formSearch.elements.submit;
+const formSearch__error = document.querySelector('.form-search__error');
+
 
 class Form {
     constructor() {
@@ -102,6 +107,24 @@ function success() {
     authorization__paragraph_success.style.display = 'block';
     authorization__paragraph.style.display = 'none';
 };
+
+function validate() {
+    if (validator.isEmpty(search.value)) {
+        formSearch__error.style.display = 'block';
+        submitSearch.setAttribute('disabled', true);
+    } else {
+        formSearch__error.style.display = 'none';
+        submitSearch.removeAttribute ('disabled');
+    }
+
+}
+
+search.addEventListener('input', validate);
+search.addEventListener('focus', validate);
+
+formSearch.addEventListener('submit', function () {
+    event.preventDefault();
+});
 
 email.addEventListener('input', submitDisabled);
 password.addEventListener('input', submitDisabled);
