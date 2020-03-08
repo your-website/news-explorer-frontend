@@ -1,35 +1,42 @@
 
-const isLoggedIn = document.querySelector('.isLoggedIn');
-const isLoggedOut = document.querySelector('.isLoggedOut');
-const header__container = document.querySelector('.header__container');
+
+const header__button_exit = document.querySelector('.header__button_exit');
+const header__button_login = document.querySelector('.header__button_login');
+const menu__item_toggle = document.querySelector('.menu__item_toggle');
+const header__nav = document.querySelector('.header__nav');
+const menu = document.querySelector('.menu');
+const headerButton = document.querySelector('.header__button_login')
 
 class Header {
     constructor(color) {
       this.color = color;
+      this.isLoggedIn = false;
     }
 
     render(props) {
       this.clear();
 
       if (props.isLoggedIn) {
-        header__container.append(isLoggedIn.content.cloneNode(true))
-        const header__button_login = document.querySelector('.header__button_login');
-        header__button_login.textContent = props.userName;
+        this.isLoggedIn = true;
+        headerButton.textContent = props.userName;
+        header__button_login.style.display = 'block';
+        header__button_exit.style.display = 'none';
+        menu__item_toggle.style.display = 'block';
+        header__nav.classList.add('header__nav_login');
+        menu.classList.add('menu_login');
       } else {
-        header__container.append(isLoggedOut.content.cloneNode(true));
+        this.isLoggedIn = false;
+        header__button_exit.style.display = 'block';
+        header__button_login.style.display = 'none';
+        menu__item_toggle.style.display = 'none';
+        header__nav.classList.remove('header__nav_login');
+        menu.classList.remove('menu_login');
       }
     }
 
     clear() {
-      if (document.querySelector('.header__nav')) {
-        const header__nav = document.querySelector('.header__nav');
-        header__nav.remove();
-      }
+   
     }
 }
-
-const head = new Header('red');
-
-head.render({ isLoggedIn: true, userName: "Roman"})
 
 export default Header;

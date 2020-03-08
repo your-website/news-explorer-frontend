@@ -9,14 +9,15 @@
 
     color: $color-two;
 
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+
     @media screen and (max-width: 968px) {
         font-size: 16px;
         line-height: 22px;
         margin-bottom: 9px;
-        display: -webkit-box;
-        -webkit-line-clamp: 4;
-        -webkit-box-orient: vertical;  
-        overflow: hidden;
     }
 
     @media screen and (max-width: 968px) {
