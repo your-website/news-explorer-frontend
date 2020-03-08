@@ -13,7 +13,7 @@ class NewsApi {
         this.apiKey = apiKey;
         this.placeSearch = placeSearch;
         this.sortBy = sortBy;
-        this.httpApi = `http://newsapi.org/v2/${this.placeSearch}?q=${this.searchWord}&from=${this.dateLastWeek}&to=${this.dateToday}&sortBy=${this.sortBy}?&pageSize=${this.pageSize}&apiKey=${this.apiKey}`;
+        this.httpApi = `https://newsapi.org/v2/${this.placeSearch}?q=${this.searchWord}&from=${this.dateLastWeek}&to=${this.dateToday}&sortBy=${this.sortBy}?&pageSize=${this.pageSize}&apiKey=${this.apiKey}`;
     }
 
     getNews() {
@@ -45,7 +45,7 @@ class NewsApi {
     }
 
     http(searchWord) {
-        return this.httpApi = `http://newsapi.org/v2/${this.placeSearch}?q=${searchWord}&from=${this.dateLastWeek}&to=${this.dateToday}&sortBy=${this.sortBy}?&pageSize=${this.pageSize}&apiKey=${this.apiKey}`;
+        return this.httpApi = `https://newsapi.org/v2/${this.placeSearch}?q=${searchWord}&from=${this.dateLastWeek}&to=${this.dateToday}&sortBy=${this.sortBy}?&pageSize=${this.pageSize}&apiKey=${this.apiKey}`;
     }
 }
 const formSearch__buttonSubmit = document.querySelector('.form-search__button-submit');
