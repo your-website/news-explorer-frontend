@@ -1,4 +1,7 @@
-.authorization__span {
+@import './_log/form-authorization__span_log.scss';
+@import './_success/form-authorization__span_success.scss';
+
+.form-authorization__span {
     font-family: $font-medium;
     font-style: normal;
     font-weight: normal;

@@ -17,22 +17,103 @@ const search = formSearch.elements.search;
 const submitSearch = formSearch.elements.submit;
 const formSearch__error = document.querySelector('.form-search__error');
 
-
 class Form {
-    constructor() {
+    constructor(from) {
+        this.form = from;
+        this.formTitle = this.form.classList.value;
 
+        this.submit = this.form.querySelector(`.${this.formTitle}__submit`);
+
+        this.validateEmail = false;
+        this.validatePassword = false;
+        this.validateName = false;
+        this.validateSearch = false;
     }
 
     setServerError() {
 
     }
 
-    _validateInputElement() {
-
+    _validateIsEmail() {
+        this.inputEmail = this.form.querySelector(`.${this.formTitle}__input_email`);
+        this.inputEmailError = this.form.querySelector(`.${this.formTitle}__error_email`);
+        if (validator.isEmail(this.inputEmail.value) || this.inputEmail.value === '') {
+            this.inputEmailError.style.display = 'none';
+            this.submit.removeAttribute ('disabled');
+            this.validateEmail = true;
+        } else {
+            this.inputEmailError.style.display = 'block';
+            this.submit.setAttribute('disabled', true);
+            this.validateEmail = false;
+        }
+        this._validateForm();
     }
 
-    _validateForm() {
+    _validatePassword() {
+        this.inputPassword = this.form.querySelector(`.${this.formTitle}__input_password`);
+        this.inputPasswordError = this.form.querySelector(`.${this.formTitle}__error_password`);
+        if (validator.isLength(this.inputPassword.value, {min:8, max: undefined}) || this.inputPassword.value === '') {
+            this.inputPasswordError.style.display = 'none';
+            this.submit.removeAttribute ('disabled');
+            this.validatePassword = true;
+        } else {
+            this.inputPasswordError.style.display = 'block';
+            this.submit.setAttribute('disabled', true);
+            this._validateForm(false)
+            this.validatePassword = false;
+        }
+        this._validateForm();
+    }
 
+    _validateName(person) {
+        this.inputName = this.form.querySelector(`.${this.formTitle}__input_name`);
+        this.inputNameError = this.form.querySelector(`.${this.formTitle}__error_name`);
+        const name = 'name';
+        if (person) {
+            this.inputNameError.style.display = 'block';
+            this.submit.setAttribute('disabled', true);
+            this.validateName = false;
+        } else {
+            this.inputNameError.style.display = 'none';
+            this.submit.removeAttribute ('disabled');
+            this.validateName = true;
+        }
+        this._validateForm(name);
+    }
+
+    _validateSearch() {
+        this.inputSearch = this.form.querySelector(`.${this.formTitle}__input_search`);
+        this.inputSearchError = this.form.querySelector(`.${this.formTitle}__error_search`);
+        const search = 'search';
+        if (validator.isEmpty(this.inputSearch.value)) {
+            this.inputSearchError.style.display = 'block';
+            this.submit.setAttribute('disabled', true);
+            this.validateSearch = false;
+        } else {
+            this.inputSearchError.style.display = 'none';
+            this.submit.removeAttribute ('disabled');
+            this.validateSearch = true;
+        }
+        this._validateForm(search);
+    }
+
+    _validateForm(props) {
+        this.inputNameContainer = this.form.querySelector(`.${this.formTitle}__container_registration`);
+        if (props === 'search') {
+            
+        } else if (props === 'name') {
+            if (this.validateEmail && this.validatePassword && this.validateName) {
+                    this.submit.classList.remove('form-authorization__submit_disabled');
+                } else {
+                    this.submit.classList.add('form-authorization__submit_disabled');
+                }
+        } else {
+            if (this.validateEmail && this.validatePassword) {
+                this.submit.classList.remove('form-authorization__submit_disabled');
+            } else {
+                this.submit.classList.add('form-authorization__submit_disabled');
+            }
+        }
     }
 
     _clear() {
@@ -44,93 +125,4 @@ class Form {
     }
 }
 
-
-function submitDisabled() {
-    if (authorization__container_registration.style.display === 'flex') {
-        submitDisabledPlusName();
-        return;
-    }
-    if (!validateEmail() || !validatePassword()) {
-        formAuthorization__submit.classList.add('form-authorization__submit_disabled');
-    } else {
-        formAuthorization__submit.classList.remove('form-authorization__submit_disabled');
-    }
-}
-
-function submitDisabledPlusName() {
-    if (!validateEmail() || !validatePassword() || !validateName()) {
-        formAuthorization__submit.classList.add('form-authorization__submit_disabled');
-    } else {
-        formAuthorization__submit.classList.remove('form-authorization__submit_disabled');
-    }
-}
-
-function validateEmail() {
-    if (!validator.isEmail(email.value)) {
-        formAuthorization__error_email.style.display = 'block';
-        submit.setAttribute('disabled', true);
-        return false;
-    } else {
-        formAuthorization__error_email.style.display = 'none';
-        submit.removeAttribute ('disabled');
-        return true;
-    }
-}
-
-function validatePassword() {
-    if (!validator.isLength(password.value, {min:2, max: undefined})) {
-        formAuthorization__error_passwrod.style.display = 'block';
-        submit.setAttribute('disabled', true);
-        return false;
-    } else {
-        formAuthorization__error_passwrod.style.display = 'none';
-        submit.removeAttribute ('disabled');
-        return true;
-    }
-}
-
-function validateName() {
-    if (validator.isEmpty(name.value)) {
-        formAuthorization__error_name.style.display = 'block';
-        submit.setAttribute('disabled', true);
-        return false;
-    } else {
-        formAuthorization__error_name.style.display = 'none';
-        submit.removeAttribute ('disabled');
-        return true;
-    }
-}
-
-function success() {
-    form.style.display = 'none';
-    authorization__contentTitle.textContent = 'Пользователь успешно зарегистрирован!';
-    authorization__paragraph_success.style.display = 'block';
-    authorization__paragraph.style.display = 'none';
-};
-
-function validate() {
-    if (validator.isEmpty(search.value)) {
-        formSearch__error.style.display = 'block';
-        submitSearch.setAttribute('disabled', true);
-    } else {
-        formSearch__error.style.display = 'none';
-        submitSearch.removeAttribute ('disabled');
-    }
-
-}
-
-search.addEventListener('input', validate);
-search.addEventListener('focus', validate);
-
-formSearch.addEventListener('submit', function () {
-    event.preventDefault();
-});
-
-email.addEventListener('input', submitDisabled);
-password.addEventListener('input', submitDisabled);
-name.addEventListener('input', submitDisabledPlusName);
-
-form.addEventListener('submit', function () {
-    event.preventDefault();
-    success();
-});
+export default Form;

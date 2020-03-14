@@ -1,126 +1,89 @@
-import Header from './Header';
-import NewsCard from './NewsCard';
-import MainApi from '../api/MainApi';
-const newsCard = new NewsCard();
-const mainApi = new MainApi();
-const header = new Header('red');
 
-mainApi.getUserData();
-
-const form = document.forms.authorization;
-const submit = form.elements.submit;
-const authorization__container_registration = document.querySelector('.authorization__container_registration');
-const authorization__contentTitle = document.querySelector('.authorization__content-title');
-const authorization__paragraph = document.querySelector('.authorization__paragraph');
-const authorization__paragraph_success = document.querySelector('.authorization__paragraph_success');
-const menu__item_toggle = document.querySelector('.menu__item_toggle');
+import { TITLE_LOGIN, TITLE_REGISTRATION, PARAGRAPH_LOGIN, PARAGRAPH_REGISTRATION, SUCCESS } from '../constants/titleForm';
 
 class Popup {
-    constructor(container, headerButtonLogin, headerButtonExit, contentSpan) {
+    constructor(container, buttonClose) {
         this.container = container;
-        this.headerButtonLogin = headerButtonLogin;
-        this.headerButtonExit = headerButtonExit;
+        this.container.addEventListener('click', this.close.bind(this));
 
-        this.contentSpan = contentSpan;
+        this.contentParagraph = this.container.querySelector('.form-authorization__span_log');
+        this.contentParagraph.addEventListener('click', this.setContent.bind(this));
 
-        this.containerToggle = document.querySelector(container);
-
-        this.openPopUp = this.openPopUp.bind(this);
-        this.close = this.close.bind(this);
-        this.setContent = this.setContent.bind(this);
-        this.changeButton = this.changeButton.bind(this);
-        this.login = this.login.bind(this);
-
-        this.popupOpenLogin = document.querySelector(this.headerButtonLogin)
-        this.popupOpenLogin.addEventListener('click', this.changeButton);
+        this.successParagraph = this.container.querySelector('.form-authorization__paragraph_success')
+        this.successParagraph.addEventListener('click', this.open.bind(this));
         
-        this.popupOpenExit = document.querySelector(this.headerButtonExit)
-        this.popupOpenExit.addEventListener('click', this.openPopUp);
-        
-        this.popupClose
-            document.querySelector(this.container)
-            .addEventListener('click', this.close);
+        this.inputs = this.container.querySelectorAll('.form-authorization__container');
 
-        this.contentSpan = document.querySelector(this.contentSpan);
-        this.contentSpan.addEventListener('click', this.setContent);
+        this.submit = this.container.querySelector('.form-authorization__submit');
 
-        this.paragraphSuccess = document.querySelector('.authorization__paragraph_success');
-        this.paragraphSuccess.addEventListener('click', this.setContent);
+        document.addEventListener('keydown', this.close.bind(this));
 
-        this.submit = form.elements.submit;
-        this.submit.addEventListener('click', this.login);
+        this.buttonClose = buttonClose;
+        this.buttonClose.addEventListener('click', this.close.bind(this));
+
+        this.burgerMenu = document.querySelector('.burger-menu');
+        this.burgerMenu.addEventListener('click', this.open.bind(this));
+
+        this.inputNameContainer = this.container.querySelector('.form-authorization__container_registration');
     }
 
     setContent() {
-        form.elements.password.value = '';
-        submit.setAttribute('disabled', true);
-        if (this.contentSpan.textContent === 'Зарегистрироваться') {
-            authorization__container_registration.style.display = 'flex';
-            this.contentSpan.textContent = 'Войти';
-            authorization__contentTitle.textContent = 'Регистрация';
-            menu__item_toggle.classList.toggle('menu__item_toggle');
-            this.containerToggle.style.display = 'flex';
-            submit.classList.add('form-authorization__submit_disabled');
-            authorization__paragraph_success.style.display = 'none';
-            authorization__paragraph.style.display = 'block';
-            submit.setAttribute('disabled', true);
-            form.elements.password.value = '';
-            submit.textContent = 'Зарегистрироваться';
+        this.contentTitle = this.container.querySelector('.authorization__content-title');
+        if(this.contentParagraph.textContent === PARAGRAPH_LOGIN) {
+            this.contentParagraph.textContent = PARAGRAPH_REGISTRATION;
+            this.contentTitle.textContent = TITLE_REGISTRATION;
+            this.inputNameContainer.style.display = 'flex';
         } else {
-            authorization__container_registration.style.display = 'none';
-            this.contentSpan.textContent = 'Зарегистрироваться';
-            authorization__contentTitle.textContent = 'Войти';
-            menu__item_toggle.classList.toggle('menu__item_toggle');
-            form.style.display = 'flex';
-            submit.textContent = 'Войти';
+            this.contentParagraph.textContent = PARAGRAPH_LOGIN;
+            this.contentTitle.textContent = TITLE_LOGIN;
+            this.inputNameContainer.style.display = 'none';
         }
     }
 
-    openPopUp() {
-        form.style.display = 'flex';
-        this.containerToggle.style.display = 'flex';
-        authorization__container_registration.style.display = 'none';
-        this.contentSpan.textContent = 'Зарегистрироваться';
-        submit.classList.add('form-authorization__submit_disabled');
-        authorization__contentTitle.textContent = 'Войти';
-        authorization__paragraph_success.style.display = 'none';
-        authorization__paragraph.style.display = 'block';
-        submit.setAttribute('disabled', true);
-        form.elements.password.value = '';
-    }
-
-    changeButton() {
-        header.render({ isLoggedIn: false, userName: ''});
-        localStorage.setItem('token', '');
-        newsCard.renderIcon();
+    open() {
+        this.contentTitle = this.container.querySelector('.authorization__content-title');
+        const paragraph = this.container.querySelector('.form-authorization__paragraph');
+        this.submit.style.display = 'block';
+        this.successParagraph.style.display = 'none';
+        paragraph.style.display = 'block'
+        this.contentParagraph.textContent = PARAGRAPH_REGISTRATION;
+        Array.from(this.inputs).forEach((item) => {
+            item.style.display = 'flex';
+        });
+        this.container.style.display = 'flex';
+        this.setContent();
     }
 
     close(event) {
-        const container = this.container.substr(1,);
-        if (
-            event.target.classList.value === container || 
-            event.target.classList.value === `${container}__svg` || 
-            event.target.classList.value === `${container}__path`
-        )   {
-                this.containerToggle.style.display = 'none';
-            }
-    }
-
-    login() {
-        const name = form.elements.name.value;
-        const password = form.elements.password.value;
-        const email = form.elements.email.value;
-        if (authorization__contentTitle.textContent === 'Войти') {
-            mainApi.signin(email, password);
-            newsCard.renderIcon();
-            this.containerToggle.style.display = 'none';
-        } else if (authorization__contentTitle.textContent === 'Регистрация') {
-            mainApi.signup(name, email, password)
+        const valueContainer = this.container.classList.value;
+        const valueButtonClose = this.buttonClose.classList.value;
+        const eventValue = event.target.classList.value;
+        if (eventValue === valueContainer || 
+            eventValue === valueButtonClose || 
+            eventValue === `${valueContainer}__svg` || 
+            eventValue === `${valueContainer}__path` ||
+            event.key === "Escape") 
+            {
+                this.container.style.display = 'none';
         }
     }
+
+    submitOk() {
+        this.container.style.display = 'none';
+    }
+
+    success() {
+        this.contentTitle = this.container.querySelector('.authorization__content-title');
+        const submit = this.container.querySelector('.form-authorization__submit');
+        const paragraph = this.container.querySelector('.form-authorization__paragraph');
+        this.submit.style.display = 'none';
+        this.successParagraph.style.display = 'block';
+        paragraph.style.display = 'none'
+        this.contentTitle.textContent = SUCCESS;
+        Array.from(this.inputs).forEach((item) => {
+            item.style.display = 'none';
+        });
+    }
 }
-const popup = new Popup('.authorization', '.header__button_login', '.header__button_exit', '.authorization__span');
 
 export default Popup;
-
-export { header };

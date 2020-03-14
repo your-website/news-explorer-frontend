@@ -1,8 +1,5 @@
 
-import Header from '../components/Header';
-const header = new Header('red');
-import NewsCardList from '../components/NewsCardList';
-const newsCardList = new NewsCardList([]);
+import { HTTPS } from '../constants/https';
 
 class MainApi {
     constructor() {
@@ -10,7 +7,7 @@ class MainApi {
     }
 
     signup(name, email, password) {
-        fetch('https://www.api.your-news-explorer.tk/signup', {
+        return fetch(`${HTTPS}/signup`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -21,14 +18,16 @@ class MainApi {
                 password: password
             })
         })
-        .then(res => res.json())
-        .then((data) => {
-            console.log(data)
+        .then(res => {
+            if (!res.ok) {
+                return Promise.reject(`Ошибка: ${res.status}`);
+            }
+            return res.json();
         });
     }
 
     signin(email, password) {
-        fetch('https://www.api.your-news-explorer.tk/signin', {
+        return fetch(`${HTTPS}/signin`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -38,49 +37,46 @@ class MainApi {
                 password: password
             })
         })
-        .then(res => res.json())
-        .then((data) => {
-            localStorage.setItem('token', data.token);
-            this.getUserData();
-        });
+        .then(res => {
+            if (!res.ok) {
+                return Promise.reject(`Ошибка: ${res.status}`);
+            }
+            return res.json();
+        })
     }
 
     getUserData() {
-        fetch('https://www.api.your-news-explorer.tk/users/me', {
+        return fetch(`${HTTPS}/users/me`, {
             method: 'GET',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`
             }
         })
-        .then(res => res.json())
-        .then((data) => {
-            header.render({ isLoggedIn: true, userName: data.data.name});
-            localStorage.setItem('name', data.data.name);
-        })
-        .catch((e) => {
-            header.render({ isLoggedIn: false, userName: ''});
+        .then(res => {
+            if (!res.ok) {
+                return Promise.reject(`Ошибка: ${res.status}`);
+            }
+            return res.json();
         })
     }
 
     getArticles() {
-        fetch('https://www.api.your-news-explorer.tk/articles', {
+        return fetch(`${HTTPS}/articles`, {
             method: 'GET',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`
             }
         })
-        .then(res => res.json())
-        .then((data) => {
-            localStorage.setItem('articles', data.data.length);
-            newsCardList.cards = data.data;
-            newsCardList.clearCardsItem();
-            newsCardList.renderSavedArticles();
+        .then(res => {
+            if (!res.ok) {
+                return Promise.reject(`Ошибка: ${res.status}`);
+            }
+            return res.json();
         })
-     
     }
 
     createArticle(keyword, title, text, date, source, link, image, links) {
-        fetch('https://www.api.your-news-explorer.tk/articles', {
+        return fetch('https://www.api.your-news-explorer.tk/articles', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -96,30 +92,28 @@ class MainApi {
                 image: image
             })
         })
-        .then(res => res.json())
-        .then((data) => {
-            if (links) {
-                links.setAttribute('id', data.data._id)
+        .then(res => {
+            if (!res.ok) {
+                return Promise.reject(`Ошибка: ${res.status}`);
             }
+            return res.json();
         });
     }
 
     removeArticle(id) {
-        fetch(`https://www.api.your-news-explorer.tk/articles/${id}`, {
+        return fetch(`${HTTPS}/articles/${id}`, {
             method: 'DELETE',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`
             }
         })
-        .then(res => res.json())
-        .then((data) => {
-            console.log(data);
+        .then(res => {
+            if (!res.ok) {
+                return Promise.reject(`Ошибка: ${res.status}`);
+            }
+            return res.json();
         });
     }
 }
-
-const mainApi = new MainApi();
-
-export { mainApi, header };
 
 export default MainApi;

@@ -4,4 +4,18 @@ let dateLastWeek = new Date();
 dateLastWeek.setDate(dateLastWeek.getDate() - 7);
 let lastWeek = dateLastWeek.getFullYear() + '-' + (dateLastWeek.getMonth() + 1) + '-' + dateLastWeek.getDate();
 
-export {today, lastWeek};
+const monthNames = [ "Января",
+                    "Февраля",
+                    "Марта",
+                    "Апреля",
+                    "Мая",
+                    "Июня",
+                    "Июля",
+                    "Августя",
+                    "Сентября",
+                    "Октября",
+                    "Ноября",
+                    "Декабря"
+                ];
+
+export { today, lastWeek, monthNames };
