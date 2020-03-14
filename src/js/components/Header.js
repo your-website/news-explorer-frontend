@@ -9,6 +9,8 @@ class Header {
         this.navigation = this.container.querySelector('.header__nav');
         this.menu = this.container.querySelector('.menu');
         this.menuToggle = this.container.querySelector('.menu__item_toggle');
+        this.burgerMenu = this.container.querySelector('.burger-menu');
+        this.burgerMenu.addEventListener('click', this.menuToggleBurger.bind(this));
     }
 
     render(props) {
@@ -28,6 +30,11 @@ class Header {
             this.navigation.classList.remove('header__nav_login');
             this.menu.classList.remove('menu_login');
         }
+    }
+
+    menuToggleBurger() {
+        this.navigation.classList.toggle('header__nav_toggle');
+        this.burgerMenu.classList.toggle('burger-menu_active');
     }
 }
 

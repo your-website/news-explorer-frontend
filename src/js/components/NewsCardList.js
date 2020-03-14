@@ -69,7 +69,6 @@ class NewsCardList {
                 imgCard.src = this.cards[this.count].urlToImage;
                 container.append(cardItem)
             } else {
-                console.log(123)
                 const paragraphTitle = document.createElement('p');
                 const containerParagraph = document.createElement('div');
                 containerParagraph.classList.add('cards__container-paragraph');

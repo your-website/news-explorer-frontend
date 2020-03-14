@@ -21,9 +21,6 @@ class Popup {
         this.buttonClose = buttonClose;
         this.buttonClose.addEventListener('click', this.close.bind(this));
 
-        this.burgerMenu = document.querySelector('.burger-menu');
-        this.burgerMenu.addEventListener('click', this.open.bind(this));
-
         this.inputNameContainer = this.container.querySelector('.form-authorization__container_registration');
     }
 
