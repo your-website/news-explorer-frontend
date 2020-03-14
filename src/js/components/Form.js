@@ -1,21 +1,4 @@
-const authorization__container_registration = document.querySelector('.authorization__container_registration');
-const formAuthorization__submit = document.querySelector('.form-authorization__submit');
-const authorization__contentTitle = document.querySelector('.authorization__content-title');
-const authorization__paragraph = document.querySelector('.authorization__paragraph');
-const authorization__paragraph_success = document.querySelector('.authorization__paragraph_success');
-const form = document.forms.authorization;
-const submit = form.elements.submit;
-const name = form.elements.name;
-const password = form.elements.password;
-const email = form.elements.email;
-const formAuthorization__error_name = document.querySelector('.form-authorization__error_name');
-const formAuthorization__error_email = document.querySelector('.form-authorization__error_email')
-const formAuthorization__error_passwrod = document.querySelector('.form-authorization__error_password');
 const validator = require('validator');
-const formSearch = document.forms.search;
-const search = formSearch.elements.search;
-const submitSearch = formSearch.elements.submit;
-const formSearch__error = document.querySelector('.form-search__error');
 
 class Form {
     constructor(from) {

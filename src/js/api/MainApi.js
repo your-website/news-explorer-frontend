@@ -76,7 +76,7 @@ class MainApi {
     }
 
     createArticle(keyword, title, text, date, source, link, image, links) {
-        return fetch('https://www.api.your-news-explorer.tk/articles', {
+        return fetch(`${HTTPS}/articles`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
