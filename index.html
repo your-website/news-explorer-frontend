@@ -8,7 +8,7 @@
   <meta name="author" content="Roman Kolpachev">
   <meta name="description" content="news-explorer-frontend">
   <title>news-explorer-frontend</title>
-  <link rel="stylesheet" href="style.c1b06fa22aa554471466.css">
+  <link rel="stylesheet" href="style.2658bb0dd8b2fd4b7de4.css">
 </head>
 
 <body class="page">
@@ -25,8 +25,8 @@
           <li class="menu__item"><a class="header__link" href="./index.html">Главная</a></li>
           <li class="menu__item menu__item_toggle"><a class="header__link" href="./saved-news.html">Сохранённые статьи</a></li>
         </ul>
-        <button class="header__button header__button_exit">Авторизоваться</button>
-        <button class="header__button header__button_login">Грета <svg class="header__svg" width="18" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M6 2H2v12h4v2H2a2 2 0 01-2-2V2a2 2 0 012-2h4v2zm7.586 7l-4.293 4.134 1.414 1.362 6.707-6.459-6.707-6.459L9.293 2.94l4.293 4.134H4V9h9.586z" fill="#fff"/></svg></button>
+        <button class="header__button header__button_login">Авторизоваться</button>
+        <button class="header__button header__button_exit">Грета <svg class="header__svg" width="18" height="16" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M6 2H2v12h4v2H2a2 2 0 01-2-2V2a2 2 0 012-2h4v2zm7.586 7l-4.293 4.134 1.414 1.362 6.707-6.459-6.707-6.459L9.293 2.94l4.293 4.134H4V9h9.586z" fill="#fff"/></svg></button>
       </nav>
     </div>
   </header>
@@ -38,9 +38,9 @@
         <p class="search__paragraph">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</p>
         <form name="search" class="form-search">
           <div class="form-search__fieldset">
-            <input name="search" class="form-search__input" type="text" placeholder="Введите тему новости">
-            <span class="form-search__error">Нужно ввести ключевое слово</span>
-            <button class="form-search__button-submit" name="submit" type="submit">Искать</button>
+            <input name="search" class="form-search__input form-search__input_search" type="text" placeholder="Введите тему новости">
+            <span class="form-search__error form-search__error_search">Нужно ввести ключевое слово</span>
+            <button class="form-search__submit" name="submit" type="submit">Искать</button>
           </div>
         </form>
       </div>
@@ -49,27 +49,27 @@
     <section class="authorization">
       <div class="authorization__container">
         <svg class="authorization__svg" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="authorization__path" d="M22.357 20l8.821 8.822-2.357 2.357L18.35 20.706a1 1 0 010-1.414L28.82 8.82l2.357 2.357L22.357 20z" fill="#fff"/><path class="authorization__path" d="M18.13 20l-8.82 8.822 2.356 2.357 10.472-10.472a1 1 0 000-1.414L11.666 8.82 9.31 11.178 18.131 20z" fill="#fff"/></svg>
-        <h2 class="authorization__content-title">Вход</h2>
         <form name="authorization" class="form-authorization">
+          <h2 class="authorization__content-title">Вход</h2>
           <div class="form-authorization__container">
             <label class="form-authorization__label" for="email">Email</label>
-            <input class="form-authorization__input" id="email" type="email" placeholder="Введите почту">
+            <input class="form-authorization__input form-authorization__input_email" id="email" type="email" placeholder="Введите почту">
             <span class="form-authorization__error form-authorization__error_email">Неправильный формат email</span>
           </div>
           <div class="form-authorization__container">
             <label class="form-authorization__label" for="password">Пароль</label>
-            <input class="form-authorization__input" id="password" type="password" placeholder="Введите пароль">
-            <span class="form-authorization__error form-authorization__error_password">Пароль должен быть больше 2 символов</span>
+            <input class="form-authorization__input form-authorization__input_password" id="password" type="password" placeholder="Введите пароль">
+            <span class="form-authorization__error form-authorization__error_password">Пароль должен быть больше 8 символов</span>
           </div>
-          <div class="form-authorization__container authorization__container_registration">
+          <div class="form-authorization__container form-authorization__container_registration">
             <label class="form-authorization__label" for="name">Имя</label>
-            <input class="form-authorization__input" id="name" type="text" placeholder="Введите своё имя">
+            <input class="form-authorization__input form-authorization__input_name" id="name" type="text" placeholder="Введите своё имя">
             <span class="form-authorization__error form-authorization__error_name">Такой пользователь уже есть</span>
           </div>
           <button disabled name="submit" class="form-authorization__submit" type="submit">Войти</button>
+          <p class="form-authorization__paragraph">или <span class="form-authorization__span form-authorization__span_log">Зарегистрироваться</span></p>
+          <p class="form-authorization__paragraph form-authorization__paragraph_success"><span class="form-authorization__span form-authorization__span_success">Выполнить вход</span></p>
         </form>
-        <p class="authorization__paragraph">или <span class="authorization__span authorization__span_log">Зарегистрироваться</span></p>
-        <p class="authorization__paragraph authorization__paragraph_success"><span class="authorization__span authorization__span_success">Выполнить вход</span></p>
       </div>
     </section>
 
@@ -81,42 +81,7 @@
     <section class="results">
       <h2 class="results__content-title">Результаты поиска</h2>
       <div class="cards">
-        <div class="cards__item">
-          <button class="cards__bookmark">
-            <svg class="cards__svg" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="cards__svg_path" d="M11.382 15.714L6 19.942V4h12v15.942l-5.382-4.228-.618-.486-.618.486z" stroke="#B6BCBF" stroke-width="2"/></svg>
-          </button>
-          <img class="cards__img" src="./images/search-result__first.jpg" alt="Национальное достояние – парки">
-          <div class="cards__container">
-            <p class="cards__date">2 августа, 2019</p>
-            <h3 class="cards__content-title">Национальное достояние – парки</h3>
-            <p class="cards__paragraph">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
-          </div>
-          <p class="cards__source">ЛЕНТА.РУ</p>
-        </div>
-        <div class="cards__item">
-          <button class="cards__bookmark">
-            <svg class="cards__svg" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="cards__svg_path" d="M11.382 15.714L6 19.942V4h12v15.942l-5.382-4.228-.618-.486-.618.486z" stroke="#B6BCBF" stroke-width="2"/></svg>
-          </button>
-          <img class="cards__img" src="./images/search-result__second.jpg" alt="Лесные огоньки">
-          <div class="cards__container">
-            <p class="cards__date">2 августа, 2019</p>
-            <h3 class="cards__content-title">Лесные огоньки: история одной фотографии</h3>
-            <p class="cards__paragraph">Фотограф отвлеклась от освещения суровой политической реальности Мексики, чтобы запечатлеть ускользающую красоту одного из местных чудес природы.</p>
-          </div>
-          <p class="cards__source">МЕДУЗА</p>
-        </div>
-        <div class="cards__item">
-          <button class="cards__bookmark">
-            <svg class="cards__svg" width="24" height="24" fill="none" xmlns="http://www.w3.org/2000/svg"><path class="cards__svg_path" d="M11.382 15.714L6 19.942V4h12v15.942l-5.382-4.228-.618-.486-.618.486z" stroke="#B6BCBF" stroke-width="2"/></svg>
-          </button>
-          <img class="cards__img" src="./images/search-result__third.jpg" alt="Первозданная тайга">
-          <div class="cards__container">
-            <p class="cards__date">2 августа, 2019</p>
-            <h3 class="cards__content-title">«Первозданная тайга»: новый фотопроект Игоря Шпиленка</h3>
-            <p class="cards__paragraph">Знаменитый фотограф снимает первозданные леса России, чтобы рассказать о необходимости их сохранения. В этот раз он отправился в Двинско-Пинежскую тайгу, где...</p>
-          </div>
-          <p class="cards__source">РИА</p>
-        </div>
+        
       </div>
       <button class="results__button">Показать еще</button>
     </section>
@@ -161,6 +126,6 @@
     </nav>
   </footer>
 
-  <script src='main.69c2a9db1abf0dfe0e95.js'> </script>
+  <script src='main.9006236d13be6c2611b4.js'> </script>
 </body>
 </html>
