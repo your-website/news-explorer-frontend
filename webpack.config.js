@@ -7,11 +7,14 @@ const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const isDev = process.env.NODE_ENV === 'development';
 
-const main = {
-  entry: { main: './src/index.js' },
+module.exports = {
+  entry: { 
+    main: './src/index.js',
+    saved: './src/saved-news.js'
+  },
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[chunkhash].js'
+    filename: '[name]/[name].[chunkhash].js'
   },
   module: {
     rules: [{
@@ -52,18 +55,28 @@ const main = {
       ],
     },
     {
-      test: /\.css$/,
-      use: [(isDev ? 'style-loader' : MiniCssExtractPlugin.loader), 'css-loader', 'postcss-loader']
+      test: /\.css$/i,
+      use: [
+          {
+              loader: (isDev ? 'style-loader' : MiniCssExtractPlugin.loader),
+              options: isDev ? {} : { publicPath: '../' }
+          },
+          'css-loader',
+          'postcss-loader'
+      ]
     },
     {
       test: /\.scss$/i,
       use: [
-          (isDev ? 'style-loader' : MiniCssExtractPlugin.loader),
+          {
+              loader: (isDev ? 'style-loader' : MiniCssExtractPlugin.loader),
+              options: isDev ? {} : { publicPath: '../' }
+          },
           'css-loader',
           'postcss-loader',
           'sass-loader'
       ]
-    }
+    },
     ]
   },
   devServer: {
@@ -71,179 +84,12 @@ const main = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: 'style.[contenthash].css',
+      filename: '[name]/style.[contenthash].css',
     }),
     new HtmlWebpackPlugin({
       inject: false,
       template: './src/index.html',
       filename: 'index.html'
-    }),
-    new OptimizeCssAssetsPlugin({
-      assetNameRegExp: /\.css$/g,
-      cssProcessor: require('cssnano'),
-      cssProcessorPluginOptions: {
-        preset: ['default'],
-      },
-      canPrint: true
-    }),
-    new WebpackMd5Hash(),
-    new webpack.DefinePlugin({
-      'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    })
-  ]
-};
-
-const login = {
-  entry: { main: './src/login.js' },
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[chunkhash].js'
-  },
-  module: {
-    rules: [{
-      test: /\.js$/,
-      use: { loader: "babel-loader" },
-      exclude: /node_modules/,
-    },
-    {
-      test: /\.(woff|woff2|ttf|otf)$/i,
-      loader: 'file-loader?name=./vendor/[name].[ext]'
-    },
-    {
-      test: /\.(png|jpe?g|gif|svg|ico)$/i,
-      use: [
-        'file-loader?name=./images/[name].[ext]',
-        {
-          loader: 'image-webpack-loader',
-          options: {
-            mozjpeg: {
-              progressive: true,
-              quality: 90
-            },
-            optipng: {
-              enabled: false,
-            },
-            pngquant: {
-              quality: [0.75, 0.90],
-              speed: 4
-            },
-            gifsicle: {
-              interlaced: false,
-            },
-            webp: {
-              quality: 90
-            }
-          }
-        },
-      ],
-    },
-    {
-      test: /\.css$/,
-      use: [(isDev ? 'style-loader' : MiniCssExtractPlugin.loader), 'css-loader', 'postcss-loader']
-    },
-    {
-      test: /\.scss$/i,
-      use: [
-          (isDev ? 'style-loader' : MiniCssExtractPlugin.loader),
-          'css-loader',
-          'postcss-loader',
-          'sass-loader'
-      ]
-    }
-    ]
-  },
-  devServer: {
-    overlay: true
-  },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'style.[contenthash].css',
-    }),
-    new HtmlWebpackPlugin({
-      inject: false,
-      template: './src/login.html',
-      filename: 'login.html'
-    }),
-    new OptimizeCssAssetsPlugin({
-      assetNameRegExp: /\.css$/g,
-      cssProcessor: require('cssnano'),
-      cssProcessorPluginOptions: {
-        preset: ['default'],
-      },
-      canPrint: true
-    }),
-    new WebpackMd5Hash(),
-    new webpack.DefinePlugin({
-      'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-    })
-  ]
-};
-
-const news = {
-  entry: { main: './src/saved-news.js' },
-  output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: '[name].[chunkhash].js'
-  },
-  module: {
-    rules: [{
-      test: /\.js$/,
-      use: { loader: "babel-loader" },
-      exclude: /node_modules/,
-    },
-    {
-      test: /\.(woff|woff2|ttf|otf)$/i,
-      loader: 'file-loader?name=./vendor/[name].[ext]'
-    },
-    {
-      test: /\.(png|jpe?g|gif|svg|ico)$/i,
-      use: [
-        'file-loader?name=./images/[name].[ext]',
-        {
-          loader: 'image-webpack-loader',
-          options: {
-            mozjpeg: {
-              progressive: true,
-              quality: 90
-            },
-            optipng: {
-              enabled: false,
-            },
-            pngquant: {
-              quality: [0.75, 0.90],
-              speed: 4
-            },
-            gifsicle: {
-              interlaced: false,
-            },
-            webp: {
-              quality: 90
-            }
-          }
-        },
-      ],
-    },
-    {
-      test: /\.css$/,
-      use: [(isDev ? 'style-loader' : MiniCssExtractPlugin.loader), 'css-loader', 'postcss-loader']
-    },
-    {
-      test: /\.scss$/i,
-      use: [
-          (isDev ? 'style-loader' : MiniCssExtractPlugin.loader),
-          'css-loader',
-          'postcss-loader',
-          'sass-loader'
-      ]
-    }
-    ]
-  },
-  devServer: {
-    overlay: true
-  },
-  plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'style.[contenthash].css',
     }),
     new HtmlWebpackPlugin({
       inject: false,
@@ -264,5 +110,3 @@ const news = {
     })
   ]
 };
-
-module.exports = [main, login, news];

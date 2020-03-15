@@ -4,6 +4,7 @@
 .results {
     padding: 80px 0;
     background-color: $background-color;
+    display: none;
 
     @media screen and (max-width: 890px) {
         padding: 41px 0;

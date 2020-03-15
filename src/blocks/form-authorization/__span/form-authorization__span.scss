@@ -1,0 +1,19 @@
+@import './_log/form-authorization__span_log.scss';
+@import './_success/form-authorization__span_success.scss';
+
+.form-authorization__span {
+    font-family: $font-medium;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+
+    cursor: pointer;
+
+    color: $button-normal;
+
+    &:hover {
+        color: $button-hover;
+    }
+}

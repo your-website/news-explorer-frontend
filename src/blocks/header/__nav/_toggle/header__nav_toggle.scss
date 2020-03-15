@@ -1,3 +1,7 @@
 .header__nav.header__nav_toggle {
     transform: translateY(286px);
+
+    @media screen and (min-width: 630px) {
+        transform: translateY(0);
+    }
 }

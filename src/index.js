@@ -1,2 +1,2 @@
 import './blocks/index.scss';
-import './js/scripts'
+import './js/scripts';
