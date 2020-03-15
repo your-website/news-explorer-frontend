@@ -1,5 +1,15 @@
 .header__button.header__button_exit {
-    max-width: 112px;
+    max-width: 150px;
+
+    text-align: left;
+    padding-left: 20px;
+
+    box-sizing: border-box;
+
+    background-image: url('./exit_white.png');
+    background-repeat: no-repeat;
+    background-position: 90% 50%;
+    background-size: auto;
 
     @media screen and (max-width: 890px) {
         height: 40px;

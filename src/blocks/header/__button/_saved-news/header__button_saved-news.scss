@@ -1,5 +1,16 @@
-.header__button.header__button_saved-news {
-    width: 112px;
+.header__button.header__button_saved-news.header__button_saved-news {
+    max-width: 150px;
+
+    text-align: left;
+    padding-left: 20px;
+
+    box-sizing: border-box;
+
+    background-image: url('./exit_black.png');
+    background-repeat: no-repeat;
+    background-position: 90% 50%;
+    background-size: auto;
+
     color: $color-two;
     border: 1px solid #D1D2D6;
 

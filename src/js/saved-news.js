@@ -1,8 +1,8 @@
-import Header from './components/Header';
-import NewsCardList from './components/NewsCardList';
+import Header from '../blocks/header/Header';
+import Results from '../blocks/results/Results';
 import MainApi from './api/MainApi';
-import NewsIcon from './components/NewsIcon';
-import SavedNews from './components/SavedNews';
+import Cards from '../blocks/cards/Cards';
+import Saved from '../blocks/saved/Saved';
 
 const headerContainer = document.querySelector('.header');
 
@@ -14,13 +14,13 @@ const spanTitle = document.querySelector('.saved__span_title');
 const spanOther = document.querySelector('.saved__span_other');
 const spanSymbol = document.querySelector('.saved__span_symbol');
 
-const newsCardList = new NewsCardList(true);
+const results = new Results(true);
 const mainApi = new MainApi();
 const header = new Header('red', headerContainer);
-const newsIcon = new NewsIcon();
-const savedNews = new SavedNews(title, spanTitle, spanOther, spanSymbol);
+const newsIcon = new Cards();
+const savedNews = new Saved(title, spanTitle, spanOther, spanSymbol);
 
-mainApi.getUserData()
+mainApi.getUserData(localStorage.getItem('token'))
     .then((res) => {
         header.render({ isLoggedIn: true, userName: res.data.name});
         savedNews.setTitle(res.data.name);
@@ -32,7 +32,7 @@ mainApi.getUserData()
     });
 
 showMoreButton.addEventListener('click', function() {
-    newsCardList.showMore();
+    results.showMore();
     newsIcon.renderIconSavedArticles();
 });
 
@@ -41,9 +41,8 @@ popupButtonExit.addEventListener('click', function() {
     localStorage.removeItem('token');
     document.location.href = './index.html';
 });
-const results = document.querySelector('.news');
 
-mainApi.getArticles()
+mainApi.getArticles(localStorage.getItem('token'))
     .then((res) => {
         const { data } = res;
         localStorage.setItem('articles', data.length);
@@ -55,12 +54,12 @@ mainApi.getArticles()
         savedNews.setKeywords(keyword);
 
         if (data.length === 0) {
-            newsCardList.noResults(results);
+            results.noResults(results);
         } else {
-            newsCardList.cards = data;
-            newsCardList.count = 0;
-            newsCardList.clearCardsItem();
-            newsCardList.renderResults();
+            results.cards = data;
+            results.count = 0;
+            results.clearCardsItem();
+            results.renderResults();
             newsIcon.renderIconSavedArticles();
         }
     })
@@ -71,10 +70,10 @@ document.addEventListener('click', function(event) {
     if (target.contains('cards__icon') || target.contains('cards__bookmark')) {
         const card = event.target.closest('.cards__item');
         const deleteCard = card.id;
-        mainApi.removeArticle(deleteCard)
+        mainApi.removeArticle(deleteCard, localStorage.getItem('token'))
             .then((res) => {
                 card.remove();
-                newsCardList.renderResults();
+                results.renderResults();
                 newsIcon.renderIconSavedArticles();
             })
             .catch(err => console.log(err));

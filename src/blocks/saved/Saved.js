@@ -1,4 +1,4 @@
-class SavedNews {
+class Saved {
     constructor(title, paragraph, other, symbol) {
         this.title = title;
         this.paragraph = paragraph;
@@ -60,4 +60,4 @@ class SavedNews {
     }
 }
 
-export default SavedNews;
+export default Saved;

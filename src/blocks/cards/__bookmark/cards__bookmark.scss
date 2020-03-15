@@ -1,4 +1,6 @@
 @import './_focus/cards__bookmark_focus.scss';
+@import './_search/cards__bookmark__search.scss';
+@import './_saved-articles/cards__bookmark_saved-articles.scss';
 
 .cards__bookmark {
     position: absolute;
@@ -14,8 +16,6 @@
     align-items: center;
 
     border-radius: 8px;
-
-    background-color: $background-color-two;
 
     &:hover .cards__svg_path {
         stroke: #1A1B22;
@@ -45,12 +45,10 @@
         border-radius: 10px;
     }
 
-    @media screen and (max-width: 890px) {
+    @media screen and (max-width: 968px) {
         top: 8px;
         right: 8px;
-    }
 
-    @media screen and (max-width: 968px) {
         &:hover::after {
             content: none;
         }

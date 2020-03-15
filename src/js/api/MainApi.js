@@ -1,5 +1,7 @@
 
 import { HTTPS } from '../constants/https';
+import { ERROR } from '../constants/error';
+import { AUTHENTICATION_SCHEME } from '../constants/auth';
 
 class MainApi {
     constructor() {
@@ -20,7 +22,7 @@ class MainApi {
         })
         .then(res => {
             if (!res.ok) {
-                return Promise.reject(`Ошибка: ${res.status}`);
+                return Promise.reject(`${ERROR} ${res.status}`);
             }
             return res.json();
         });
@@ -39,48 +41,48 @@ class MainApi {
         })
         .then(res => {
             if (!res.ok) {
-                return Promise.reject(`Ошибка: ${res.status}`);
+                return Promise.reject(`${ERROR} ${res.status}`);
             }
             return res.json();
         })
     }
 
-    getUserData() {
+    getUserData(token) {
         return fetch(`${HTTPS}/users/me`, {
             method: 'GET',
             headers: {
-                authorization: `Bearer ${localStorage.getItem('token')}`
+                authorization: `${AUTHENTICATION_SCHEME} ${token}`
             }
         })
         .then(res => {
             if (!res.ok) {
-                return Promise.reject(`Ошибка: ${res.status}`);
+                return Promise.reject(`${ERROR} ${res.status}`);
             }
             return res.json();
         })
     }
 
-    getArticles() {
+    getArticles(token) {
         return fetch(`${HTTPS}/articles`, {
             method: 'GET',
             headers: {
-                authorization: `Bearer ${localStorage.getItem('token')}`
+                authorization: `${AUTHENTICATION_SCHEME} ${token}`
             }
         })
         .then(res => {
             if (!res.ok) {
-                return Promise.reject(`Ошибка: ${res.status}`);
+                return Promise.reject(`${ERROR} ${res.status}`);
             }
             return res.json();
         })
     }
 
-    createArticle(keyword, title, text, date, source, link, image, links) {
+    createArticle(keyword, title, text, date, source, link, image, token) {
         return fetch(`${HTTPS}/articles`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                authorization: `Bearer ${localStorage.getItem('token')}`
+                authorization: `${AUTHENTICATION_SCHEME} ${token}`
             },
             body: JSON.stringify({
                 keyword: keyword,
@@ -94,22 +96,22 @@ class MainApi {
         })
         .then(res => {
             if (!res.ok) {
-                return Promise.reject(`Ошибка: ${res.status}`);
+                return Promise.reject(`${ERROR} ${res.status}`);
             }
             return res.json();
         });
     }
 
-    removeArticle(id) {
+    removeArticle(id, token) {
         return fetch(`${HTTPS}/articles/${id}`, {
             method: 'DELETE',
             headers: {
-                authorization: `Bearer ${localStorage.getItem('token')}`
+                authorization: `${AUTHENTICATION_SCHEME} ${token}`
             }
         })
         .then(res => {
             if (!res.ok) {
-                return Promise.reject(`Ошибка: ${res.status}`);
+                return Promise.reject(`${ERROR} ${res.status}`);
             }
             return res.json();
         });

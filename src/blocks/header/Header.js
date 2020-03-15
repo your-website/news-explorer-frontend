@@ -1,4 +1,6 @@
 
+import BaseComponent from '../../js/components/BaseComponent';
+
 class Header {
     constructor(color, container) {
         this.color = color;
@@ -10,7 +12,16 @@ class Header {
         this.menu = this.container.querySelector('.menu');
         this.menuToggle = this.container.querySelector('.menu__item_toggle');
         this.burgerMenu = this.container.querySelector('.burger-menu');
-        this.burgerMenu.addEventListener('click', this.menuToggleBurger.bind(this));
+
+        const elementHandlersClick = [ 
+            {
+                name: this.burgerMenu,
+                handler: this.menuToggleBurger.bind(this)
+            }
+        ];
+        
+        const clickHandlers = new BaseComponent(elementHandlersClick);
+        clickHandlers._setHandlers('click');
     }
 
     render(props) {

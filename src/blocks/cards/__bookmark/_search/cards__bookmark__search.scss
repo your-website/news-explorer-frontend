@@ -1,0 +1,10 @@
+.cards__bookmark.cards__bookmark__search {
+    background-image: url('./bookmark.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto;
+
+    &:hover {
+        background-image: url('./bookmark_hover.png');
+    }
+}

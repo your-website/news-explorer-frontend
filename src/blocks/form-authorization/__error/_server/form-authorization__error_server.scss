@@ -1,0 +1,10 @@
+.form-authorization__error.form-authorization__error_server {
+    position: absolute;
+    bottom: 130px;
+    left: 110px;
+    width: 200px;
+    text-align: center;
+    @media screen and (max-width: 560px) {
+        left: 75px;
+    }
+}
