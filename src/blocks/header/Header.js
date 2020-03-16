@@ -13,14 +13,14 @@ class Header {
         this.menuToggle = this.container.querySelector('.menu__item_toggle');
         this.burgerMenu = this.container.querySelector('.burger-menu');
 
-        const elementHandlersClick = [ 
+        this.elementHandlersClick = [ 
             {
                 name: this.burgerMenu,
                 handler: this.menuToggleBurger.bind(this)
             }
         ];
         
-        const clickHandlers = new BaseComponent(elementHandlersClick);
+        const clickHandlers = new BaseComponent(this.elementHandlersClick);
         clickHandlers._setHandlers('click');
     }
 

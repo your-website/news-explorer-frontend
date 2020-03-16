@@ -12,13 +12,13 @@ class FormSearch {
         this.errorServer = false;
         this.inputSearch = this.form.querySelector(`.${this.formTitle}__input_search`);
 
-        const elementHandlersInput = [ 
+        this.elementHandlersInput = [ 
             {
                 name: this.inputSearch,
                 handler: this._validateSearch.bind(this)
             }
         ];
-        const inputHandlers = new BaseComponent(elementHandlersInput);
+        const inputHandlers = new BaseComponent(this.elementHandlersInput);
         inputHandlers._setHandlers('input');
     }
 

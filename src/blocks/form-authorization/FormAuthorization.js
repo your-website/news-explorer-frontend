@@ -32,7 +32,7 @@ class FormAuthorization {
 
         this.errorServer = false;
 
-        const elementHandlersInput = [ 
+        this.elementHandlersInput = [ 
             {
                 name: this.inputEmail,
                 handler: this._validateIsEmail.bind(this)
@@ -47,9 +47,9 @@ class FormAuthorization {
             }
         ];
         
-        const inputHandlers = new BaseComponent(elementHandlersInput);
+        const inputHandlers = new BaseComponent(this.elementHandlersInput);
 
-        const elementHandlersClick = [ 
+        this.elementHandlersClick = [ 
             {
                 name: this.container,
                 handler: this.close.bind(this)
@@ -67,15 +67,15 @@ class FormAuthorization {
                 handler: this.close.bind(this)
             }
         ];
-        const clickHandlers = new BaseComponent(elementHandlersClick);
+        const clickHandlers = new BaseComponent(this.elementHandlersClick);
 
-        const elementHandlersKeydown = [ 
+        this.elementHandlersKeydown = [ 
             {
                 name: document,
                 handler: this.close.bind(this)
             }
         ];
-        const keydownHandlers = new BaseComponent(elementHandlersKeydown);
+        const keydownHandlers = new BaseComponent(this.elementHandlersKeydown);
 
         inputHandlers._setHandlers('input');
         clickHandlers._setHandlers('click');
