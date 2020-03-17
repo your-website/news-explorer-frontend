@@ -3,8 +3,9 @@ import { TITLE_LOGIN, TITLE_REGISTRATION, PARAGRAPH_LOGIN, PARAGRAPH_REGISTRATIO
 import BaseComponent from '../../js/components/BaseComponent';
 const validator = require('validator');
 
-class FormAuthorization {
+class FormAuthorization extends BaseComponent {
     constructor(container, buttonClose, form) {
+        super();
         this.container = container;
         this.form = form;
         this.formTitle = this.form.classList.value;
@@ -46,8 +47,6 @@ class FormAuthorization {
                 handler: this._validateName.bind(this)
             }
         ];
-        
-        const inputHandlers = new BaseComponent(this.elementHandlersInput);
 
         this.elementHandlersClick = [ 
             {
@@ -67,19 +66,16 @@ class FormAuthorization {
                 handler: this.close.bind(this)
             }
         ];
-        const clickHandlers = new BaseComponent(this.elementHandlersClick);
-
         this.elementHandlersKeydown = [ 
             {
                 name: document,
                 handler: this.close.bind(this)
             }
         ];
-        const keydownHandlers = new BaseComponent(this.elementHandlersKeydown);
 
-        inputHandlers._setHandlers('input');
-        clickHandlers._setHandlers('click');
-        keydownHandlers._setHandlers('keydown');
+        this._setHandlers('input', this.elementHandlersInput);
+        this._setHandlers('click', this.elementHandlersClick);
+        this._setHandlers('keydown', this.elementHandlersKeydown);
     }
 
     setContent() {

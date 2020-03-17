@@ -3,8 +3,9 @@ import BaseComponent from '../../js/components/BaseComponent';
 
 import { ENTER__KEY__WORDS } from '../../js/constants/error';
 
-class FormSearch {
+class FormSearch extends BaseComponent {
     constructor(form) {
+        super();
         this.form = form;
         this.formTitle = this.form.classList.value;
         this.submit = this.form.querySelector(`.${this.formTitle}__submit`);
@@ -18,8 +19,7 @@ class FormSearch {
                 handler: this._validateSearch.bind(this)
             }
         ];
-        const inputHandlers = new BaseComponent(this.elementHandlersInput);
-        inputHandlers._setHandlers('input');
+        this._setHandlers('input', this.elementHandlersInput);
     }
 
     setServerError(errorServer, string) {

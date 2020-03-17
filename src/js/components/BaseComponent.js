@@ -1,10 +1,9 @@
 class BaseComponent {
-    constructor(handlers) {
-        this.handlers = handlers;
+    constructor() {
     }
 
-    _setHandlers(event) {
-        this.handlers.forEach(element => {
+    _setHandlers(event, handler) {
+        handler.forEach(element => {
             element.name.addEventListener(event, element.handler);
         });
     }

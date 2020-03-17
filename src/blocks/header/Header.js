@@ -1,8 +1,9 @@
 
 import BaseComponent from '../../js/components/BaseComponent';
 
-class Header {
+class Header extends BaseComponent {
     constructor(color, container) {
+        super();
         this.color = color;
         this.isLoggedIn = false;
         this.container = container;
@@ -20,8 +21,7 @@ class Header {
             }
         ];
         
-        const clickHandlers = new BaseComponent(this.elementHandlersClick);
-        clickHandlers._setHandlers('click');
+        this._setHandlers('click', this.elementHandlersClick);
     }
 
     render(props) {
