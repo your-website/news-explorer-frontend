@@ -1,18 +1,16 @@
-import Header from './components/Header';
-import Popup from './components/Popup';
-import Form from './components/Form';
-import NewsCardList from './components/NewsCardList';
+import Header from '../blocks/header/Header';
+import FormAuthorization from '../blocks/form-authorization/FormAuthorization';
+import Results from '../blocks/results/Results';
 import NewsApi from './api/NewsApi';
 import MainApi from './api/MainApi';
-import NewsIcon from './components/NewsIcon';
+import Cards from '../blocks/cards/Cards';
+import FormSearch from '../blocks/form-search/FormSearch';
 
 import { today, lastWeek } from './utils/date';
 import { apiKey, searchPlace, searchCategory } from './utils/paramsSearch';
-
-import { TITLE_LOGIN, TITLE_REGISTRATION, PARAGRAPH_LOGIN, PARAGRAPH_REGISTRATION } from './constants/titleForm';
-
-import bookmark from '../images/bookmark.png';
-import bookmark_hover from '../images/bookmark_hover.png';
+import { TITLE_LOGIN } from './constants/titleForm';
+import bookmarkIconFocus from '../images/bookmark_focus.png';
+import { ERROR__DATA_AUTHORIZATION, ERROR__INTERNET, PERSON__CREATE } from './constants/error';
 
 const headerContainer = document.querySelector('.header');
 
@@ -23,56 +21,56 @@ const popupButtonOpen = document.querySelector('.header__button_login');
 const popupButtonExit = document.querySelector('.header__button_exit');
 const popupClose = document.querySelector('.authorization__svg');
 
-const formAuthorization = document.querySelector('.form-authorization');
-const buttonSubmitAuthorization = formAuthorization.querySelector('.form-authorization__submit');
-const inputEmail = formAuthorization.querySelector('.form-authorization__input_email');
-const inputPassword = formAuthorization.querySelector('.form-authorization__input_password');
-const inputName = formAuthorization.querySelector('.form-authorization__input_name');
+const formAuthorizationContainer = document.querySelector('.form-authorization');
+const buttonSubmitAuthorization = formAuthorizationContainer.querySelector('.form-authorization__submit');
+const inputEmail = formAuthorizationContainer.querySelector('.form-authorization__input_email');
+const inputPassword = formAuthorizationContainer.querySelector('.form-authorization__input_password');
+const inputName = formAuthorizationContainer.querySelector('.form-authorization__input_name');
 const titleAuthorization = document.querySelector('.authorization__content-title');
 
-const formSearch = document.querySelector('.form-search');
-const buttonSearch = formSearch.querySelector('.form-search__submit');
-const inputSearch = document.querySelector('.form-search__input_search')
+const formSearchContainer = document.querySelector('.form-search');
+const buttonSearch = formSearchContainer.querySelector('.form-search__submit');
+const inputSearch = formSearchContainer.querySelector('.form-search__input_search')
 
-const newsCardList = new NewsCardList(false);
+const results = new Results(false);
 const mainApi = new MainApi();
 const header = new Header('red', headerContainer);
-const popup = new Popup(popupContainer, popupClose);
-const formValidateAuthorization = new Form(formAuthorization);
-const formValidateSearch = new Form(formSearch);
-const newsApi = new NewsApi(inputSearch.value, 100, today, lastWeek, apiKey, searchPlace, searchCategory);
-const newsIcon = new NewsIcon();
+const formAuthorization = new FormAuthorization(popupContainer, popupClose, formAuthorizationContainer);
+const formSearch = new FormSearch(formSearchContainer);
 
-mainApi.getUserData()
+const newsApi = new NewsApi(inputSearch.value, 100, today, lastWeek, apiKey, searchPlace, searchCategory);
+const newsIcon = new Cards();
+
+mainApi.getUserData(localStorage.getItem('token'))
     .then((res) => {
         header.render({ isLoggedIn: true, userName: res.data.name});
     })
     .catch(err => header.render({ isLoggedIn: false, userName: ''}));
 
-inputEmail.addEventListener('input', formValidateAuthorization._validateIsEmail.bind(formValidateAuthorization));
-inputPassword.addEventListener('input', formValidateAuthorization._validatePassword.bind(formValidateAuthorization));
-inputSearch.addEventListener('input', formValidateSearch._validateSearch.bind(formValidateSearch));
-
 buttonSearch.addEventListener('click', function() {
     event.preventDefault();
+    formSearch.disabledForm(true);
     newsApi.https(inputSearch.value);
-    newsCardList.renderLoader(true)
+    results.renderLoader(true);
     newsApi.getNews()
         .then((res) => {
             const { articles } = res;
             if (articles.length === 0) {
-                newsCardList.noResults();
+                results.noResults();
                 return;
             }
-            newsCardList.cards = articles;
+            results.cards = articles;
             localStorage.setItem('keyword', inputSearch.value);
-            newsCardList.renderLoader(false);
-            newsCardList.count = 0;
-            newsCardList.clearCardsItem();
-            newsCardList.renderResults();
+            results.renderLoader(false);
+            results.count = 0;
+            results.clearCardsItem();
+            results.renderResults();
             newsIcon.renderIcon(header.isLoggedIn);
         })
-        .catch(err => console.log(err));
+        .catch((err) => {
+            formSearch.setServerError(true, ERROR__INTERNET);
+        })
+        .finally(() => formSearch.disabledForm(false));
 });
 
 buttonSubmitAuthorization.addEventListener('click', function() {
@@ -81,37 +79,51 @@ buttonSubmitAuthorization.addEventListener('click', function() {
     const password = inputPassword.value;
 
     if (titleAuthorization.textContent === TITLE_LOGIN) {
+        formAuthorization.disabledForm(true);
         mainApi.signin(email, password)
             .then((res) => {
                 localStorage.setItem('token', res.token);
-                mainApi.getUserData()
+                mainApi.getUserData(localStorage.getItem('token'))
                     .then((res) => {
                         header.render({ isLoggedIn: true, userName: res.data.name});
                         newsIcon.renderIcon(header.isLoggedIn);
-                        popup.submitOk();
+                        formAuthorization.submitOk();
                     })
-                    .catch(err => console.log(err));
+                    .catch((err) => {
+                        console.log(err);
+                    });
             })
-            .catch(err => console.log(err));
+            .catch((err) => {
+                if (err.indexOf(4) === '-1') {
+                    formAuthorization.setServerError(true, ERROR__INTERNET);
+                } else formAuthorization.setServerError(true, ERROR__DATA_AUTHORIZATION);
+            })
+            .finally(() => formAuthorization.disabledForm(false));
     } else {
         const name = inputName.value;
+        formAuthorization.disabledForm(true);
         mainApi.signup(name, email, password)
             .then((res) => {
-                popup.success();
-                formValidateAuthorization._validateName(false)
+                formAuthorization.success();
+                formAuthorization._validateName(false)
             })
-            .catch(err => formValidateAuthorization._validateName(true));
+            .catch((err) => {
+                if (err.indexOf(400) === '-1' || err.indexOf(500) === '-1') {
+                    formAuthorization.setServerError(true, ERROR__INTERNET);
+                } else formAuthorization.setServerError(true, PERSON__CREATE);
+            })
+            .finally(() => formAuthorization.disabledForm(false));
     }
 });
 
 showMoreButton.addEventListener('click', function() {
-    newsCardList.showMore();
+    results.showMore();
     newsIcon.renderIcon(header.isLoggedIn);
 });
 
 popupButtonOpen.addEventListener('click', function() {
-    popup.open();
-    formValidateAuthorization._validateName(false);
+    formAuthorization.open();
+    formAuthorization._validateName(false);
 });
 
 popupButtonExit.addEventListener('click', function() {
@@ -126,10 +138,10 @@ document.addEventListener('click', function(event) {
         const item = event.target.closest('.cards__item');
         const icon = item.querySelector('.cards__icon');
         if (item.hasAttribute('id')) {
-            mainApi.removeArticle(item.id)
+            mainApi.removeArticle(item.id, localStorage.getItem('token'))
                 .then((res) => {
                     item.removeAttribute('id');
-                    icon.src = bookmark;
+                    icon.src = '';
                 })
                 .catch(err => console.log(err));
 
@@ -143,12 +155,12 @@ document.addEventListener('click', function(event) {
             const text = data.querySelector('.cards__paragraph').textContent;
             const source = item.querySelector('.cards__source').textContent;
 
-            mainApi.createArticle(keyword, contentTitle, text, date, source, linkUrl, linkUrlImg, item)
+            mainApi.createArticle(keyword, contentTitle, text, date, source, linkUrl, linkUrlImg, localStorage.getItem('token'))
                 .then((res) => {
-                    icon.src = bookmark_hover;
+                    icon.src = bookmarkIconFocus;
                     item.id = res.data._id;
                 })
                 .catch(err => console.log(err));
         }
     }
-})
+});

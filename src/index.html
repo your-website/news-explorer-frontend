@@ -40,7 +40,7 @@
           <div class="form-search__fieldset">
             <input name="search" class="form-search__input form-search__input_search" type="text" placeholder="Введите тему новости">
             <span class="form-search__error form-search__error_search">Нужно ввести ключевое слово</span>
-            <button class="form-search__submit" name="submit" type="submit">Искать</button>
+            <button class="form-search__submit" disabled name="submit" type="submit">Искать</button>
           </div>
         </form>
       </div>
@@ -64,9 +64,10 @@
           <div class="form-authorization__container form-authorization__container_registration">
             <label class="form-authorization__label" for="name">Имя</label>
             <input class="form-authorization__input form-authorization__input_name" id="name" type="text" placeholder="Введите своё имя">
-            <span class="form-authorization__error form-authorization__error_name">Такой пользователь уже есть</span>
+            <span class="form-authorization__error form-authorization__error_name">Введите имя</span>
           </div>
           <button disabled name="submit" class="form-authorization__submit" type="submit">Войти</button>
+          <span class="form-authorization__error form-authorization__error_server">Такой пользователь уже есть</span>
           <p class="form-authorization__paragraph">или <span class="form-authorization__span form-authorization__span_log">Зарегистрироваться</span></p>
           <p class="form-authorization__paragraph form-authorization__paragraph_success"><span class="form-authorization__span form-authorization__span_success">Выполнить вход</span></p>
         </form>
@@ -95,7 +96,11 @@
     </section>
     
     <section class="about">
-      <img class="about__image" src="<%=require('./images/main__avatar.png')%>" alt="about me">
+      <picture class="about__image-container">
+        <source class="about__image" srcset="<%=require('./images/main__avatar_mobile.png')%>" media="(max-width: 500px)">
+        <source class="about__image" srcset="<%=require('./images/main__avatar_tablet.png')%>" media="(max-width: 768px)">
+        <img class="about__image" src="<%=require('./images/main__avatar.png')%>" alt="about me">
+      </picture>
       <div class="about__container">
         <h2 class="about__content-title">Об авторе</h2>
         <p class="about__paragraph">Это блок с описанием автора проекта. Здесь следует указать, как вас зовут, чем вы занимаетесь, какими технологиями разработки владеете.</p>

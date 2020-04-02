@@ -1,6 +1,9 @@
 
-class Header {
+import BaseComponent from '../../js/components/BaseComponent';
+
+class Header extends BaseComponent {
     constructor(color, container) {
+        super();
         this.color = color;
         this.isLoggedIn = false;
         this.container = container;
@@ -10,7 +13,15 @@ class Header {
         this.menu = this.container.querySelector('.menu');
         this.menuToggle = this.container.querySelector('.menu__item_toggle');
         this.burgerMenu = this.container.querySelector('.burger-menu');
-        this.burgerMenu.addEventListener('click', this.menuToggleBurger.bind(this));
+
+        this.elementHandlersClick = [ 
+            {
+                name: this.burgerMenu,
+                handler: this.menuToggleBurger.bind(this)
+            }
+        ];
+        
+        this._setHandlers('click', this.elementHandlersClick);
     }
 
     render(props) {

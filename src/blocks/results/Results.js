@@ -1,20 +1,20 @@
-const preloader = document.querySelector('.preloader');
-const results = document.querySelector('.results');
-const noResults = document.querySelector('.no-results');
-import { monthNames } from '../utils/date';
+import { monthNames } from '../../js/utils/date';
 
-class NewsCardList {
+class Results {
     constructor(savedNews) {
         this.cards = '';
         this.count = 0;
         this.button = document.querySelector('.results__button');
+        this.preloader = document.querySelector('.preloader');
+        this.results = document.querySelector('.results');
+        this.noResult = document.querySelector('.no-results');
         this.savedNews = savedNews;
         this.monthNames = monthNames;
     }
 
     renderResults() {
-        results.style.display = 'grid';
-        preloader.style.display = 'none';
+        this.results.style.display = 'grid';
+        this.preloader.style.display = 'none';
         const container = document.querySelector('.cards')
         this.button.before(container);
         this.buttonToggle();
@@ -93,25 +93,25 @@ class NewsCardList {
 
     renderLoader(isLoading) {
         if (isLoading) {
-            preloader.style.display = 'flex';
-            results.style.display = 'none';
-            noResults.style.display = 'none';
+            this.preloader.style.display = 'flex';
+            this.results.style.display = 'none';
+            this.noResult.style.display = 'none';
         } else {
-            preloader.style.display = 'none';
-            results.style.display = 'grid';
+            this.preloader.style.display = 'none';
+            this.results.style.display = 'grid';
         }
     }
 
     beforeSearch() {
-        results.style.display = 'none';
-        preloader.style.display = 'none';
-        noResults.style.display = 'none';
+        this.results.style.display = 'none';
+        this.preloader.style.display = 'none';
+        this.noResult.style.display = 'none';
     }
 
     noResults() {
-        results.style.display = 'none';
-        preloader.style.display = 'none';
-        noResults.style.display = 'flex';
+        this.results.style.display = 'none';
+        this.preloader.style.display = 'none';
+        this.noResult.style.display = 'flex';
     }
 
     showMore() {
@@ -134,4 +134,4 @@ class NewsCardList {
     }
 }
 
-export default NewsCardList;
+export default Results;

@@ -1,0 +1,10 @@
+.cards__bookmark.cards__bookmark_saved-articles {
+    background-image: url('./Union.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto;
+
+    &:hover {
+        background-image: url('./Union_hover.png');
+    }
+}
